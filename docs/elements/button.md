@@ -35,7 +35,7 @@ export const Demo = () => {
 
 ### 禁用与加载中状态
 
-![disabled&loading](../_images/components/button/disabled&loading.png)
+![disabled&loading](../_images/elements/button/disabled&loading.png)
 
 ```javascript
 import { Button } from '@codoonfxd/crn-elements';
@@ -68,7 +68,7 @@ export const Demo = () => {
 
 ### 适配 iPhone X 的底部 bar 空间
 
-![fix-iphonex](../_images/components/button/fix-iphonex.png)
+![fix-iphonex](../_images/elements/button/fix-iphonex.png)
 
 ```javascript
 import { Button } from '@codoonfxd/crn-elements';
