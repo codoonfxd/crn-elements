@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-19 15:34:24
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-03-19 16:52:26
+ * @Last Modified time: 2019-03-19 18:46:17
  * @Content: 按钮
  */
 import * as React from 'react'
@@ -57,7 +57,6 @@ export default class Button extends React.Component<IProps> {
         style={{
           height: 50 + iphoneXBottomSpace,
           width: DEVICE_WIDTH,
-          flex: 1,
           ...style,
           backgroundColor: disabled
             ? DISABLE_COLOR
