@@ -1,6 +1,6 @@
 {
   "name": "@codoonfxd/crn-elements",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A ReactNative Component Library of CodoonFXD.",
   "keywords": [
     "ReactNative",
@@ -56,5 +56,9 @@
       "npm run lint",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@types/color": "^3.0.0",
+    "color": "^3.1.0"
   }
 }
