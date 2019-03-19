@@ -18,14 +18,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://git.in.codoon.com/fxd-react-native/crn-elements"
+    "url": "https://github.com/codoonfxd/crn-elements"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "docs-dev": "docsify serve docs",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -t -n ./node_modules/@codoonfxd/changelog-config"
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -t -r 0 -p angular"
   },
   "devDependencies": {
     "@codoonfxd/changelog-config": "^0.1.0",
