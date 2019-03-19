@@ -2,6 +2,8 @@
 
 > 用于 React Native 的组件库，该组件库使用 Typescript 开发，提供了更方便的类型支持。
 
+[文档地址](https://codoonfxd.github.io/crn-elements)
+
 ## 快速开始
 
 ### 安装
