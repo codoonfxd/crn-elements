@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-19 15:34:24
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-03-19 18:46:17
+ * @Last Modified time: 2019-03-20 16:43:51
  * @Content: 按钮
  */
 import * as React from 'react'
@@ -24,6 +24,8 @@ interface IProps {
   textStyle?: TextStyle
   disabled?: boolean
   loading?: boolean
+  /** 是否采用不填充的样式 */
+  ghost?: boolean
   /** 添加IPhone X底部空间 */
   showBottomSpace?: boolean
   onPress?(): any
@@ -35,6 +37,7 @@ export default class Button extends React.Component<IProps> {
     textStyle: {},
     disabled: false,
     loading: false,
+    ghost: false,
     showBottomSpace: false,
   }
 
@@ -47,24 +50,45 @@ export default class Button extends React.Component<IProps> {
       disabled = false,
       loading = false,
       showBottomSpace = false,
+      ghost = false,
     } = this.props
     const color = Color(style.backgroundColor || THEME_COLOR)
-    const backgroundColor = color.string()
     const darkenColor = color.darken(0.15).string()
+    const backgroundColor = ghost
+      ? '#ffffff'
+      : disabled
+      ? DISABLE_COLOR
+      : loading
+      ? darkenColor
+      : color.string()
     const iphoneXBottomSpace = showBottomSpace && IS_IPHONE_X ? 24 : 0
+    const colorString = color.string()
+    const ghostColor = disabled ? DISABLE_COLOR : colorString
+    const ghostStyle: ViewStyle = ghost
+      ? {
+          borderColor: ghostColor,
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      : {}
+    const ghostTextStyle: TextStyle = ghost
+      ? { color: ghostColor }
+      : {
+          color: textStyle.color || '#fff',
+        }
+
     return (
       <TouchableHighlight
         style={{
           height: 50 + iphoneXBottomSpace,
           width: DEVICE_WIDTH,
+          ...ghostStyle,
           ...style,
-          backgroundColor: disabled
-            ? DISABLE_COLOR
-            : loading
-            ? darkenColor
-            : backgroundColor,
+          backgroundColor,
         }}
-        underlayColor={disabled ? DISABLE_COLOR : darkenColor}
+        underlayColor={
+          ghost ? '#ffffff' : disabled ? DISABLE_COLOR : darkenColor
+        }
         onPress={disabled || loading ? undefined : onPress}
       >
         <View
@@ -72,8 +96,8 @@ export default class Button extends React.Component<IProps> {
             flexDirection: 'row',
             justifyContent: 'center',
             flex: 1,
-            paddingLeft: 16,
-            paddingRight: 16,
+            paddingLeft: 12,
+            paddingRight: 12,
             paddingBottom: iphoneXBottomSpace,
           }}
         >
@@ -81,7 +105,7 @@ export default class Button extends React.Component<IProps> {
             <ActivityIndicator
               size="small"
               style={{ marginRight: 4 }}
-              color={textStyle.color || '#fff'}
+              color={ghostTextStyle.color}
             />
           ) : null}
           <View style={{ justifyContent: 'center' }}>
@@ -90,8 +114,8 @@ export default class Button extends React.Component<IProps> {
                 style={{
                   textAlign: 'center',
                   fontSize: 16,
-                  color: '#fff',
                   ...textStyle,
+                  ...ghostTextStyle,
                 }}
                 numberOfLines={1}
               >
