@@ -5,3 +5,5 @@
   - [Button](elements/button.md)
 
 - [更新日志](CHANGELOG.md)
+
+- [如何贡献](CONTRIBUTING.md)
