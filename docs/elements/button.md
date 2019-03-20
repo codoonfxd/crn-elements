@@ -78,6 +78,18 @@ export const Demo = () => {
 };
 ```
 
+### 使用描边样式
+
+![ghost](../_images/elements/button/ghost.png)
+
+```javascript
+import { Button } from '@codoonfxd/crn-elements';
+
+export const Demo = () => {
+  return <Button title="描边样式" ghost />;
+};
+```
+
 ## Props
 
 |      参数       |                   说明                    |      类型       | 可选值 |  默认值   |
@@ -89,3 +101,4 @@ export const Demo = () => {
 |     loading     |            是否展示加载中状态             |     boolean     |   -    |   false   |
 | showBottomSpace |       是否留出 iPhone X 底部的空间        |     boolean     |   -    |   false   |
 |     onPress     |             点击时触发的函数              |    function     |   -    | undefined |
+|      ghost      |             是否使用描边样式              |     boolean     |   -    |   false   |
