@@ -2,11 +2,13 @@
 
 > 用于 React Native 的组件库，该组件库使用 Typescript 开发，提供了更方便的类型支持。
 
-[文档地址](https://codoonfxd.github.io/crn-elements)
+## 🔗 链接一览
 
-## 快速开始
+- [📑文档地址](https://codoonfxd.github.io/crn-elements)
+- [🚀更新日志](https://codoonfxd.github.io/crn-elements/#/CHANGELOG)
+- [🔌如何贡献](https://codoonfxd.github.io/crn-elements/#/CONTRIBUTING)
 
-### 安装
+## ⚙️ 安装
 
 ```bash
 # 使用npm
@@ -16,7 +18,7 @@ npm install --save @codoonfxd/crn-elements
 yarn add @codoonfxd/crn-elements
 ```
 
-### 使用
+## 🎊 使用
 
 ```javascript
 import { Button } from '@codoonfxd/crn-elements';
