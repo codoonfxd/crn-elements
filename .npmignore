@@ -1,2 +1,9 @@
 src/
 docs/
+rndemo/
+index.js
+babel.config.js
+metro.config.js
+rn-cli.config.js
+.buckconfig
+.watchmanconfig
