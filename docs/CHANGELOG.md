@@ -1,3 +1,13 @@
+# 0.2.0 (2019-03-22)
+
+
+### Features
+
+* **gallery:** Gallery组件新增props ([feb0592](https://github.com/codoonfxd/crn-elements/commit/feb0592))
+* **gallery:** 新增Gallery组件，用于展示九宫格相册 ([60b3d91](https://github.com/codoonfxd/crn-elements/commit/60b3d91))
+
+
+
 ## 0.1.1 (2019-03-20)
 
 

@@ -40,6 +40,8 @@
 
 如果添加新组件，请在`elements`文件夹下创建相应组件的文档，并在`_sidebar.md`中按照结构增加相应的组件菜单入口，如果需要添加图片，请在`_images`目录的组件目录中添加图片。
 
+> 本地调试文档请在项目目录下运行`yarn docs-dev`。
+
 **注意：**所有组件相关的文件名请使用**小写**。
 
 ## 开发流程
@@ -56,3 +58,17 @@
   - 执行`yarn test`和`yarn lint`，确保代码理论上无误。
   - 执行`yarn build`打包。
   - 执行`npm publish`发布，并在 Github 上创建 Release，生成 Tag。
+
+## 本地调试环境
+
+> 进行以下操作之前，请确保本地的 Xcode 以及 Simulator 安装完成，具体的流程请参考这一篇[官方文档](https://facebook.github.io/react-native/docs/getting-started)下的`React Native CLI Quickstart`。
+
+请按照以下步骤完成本地调试环境的搭建：
+
+- 安装依赖
+- `yarn run-ios`，该命令会自动打包并在模拟器中安装`crnElements`应用（该应用入口文件为根目录下的`index.js`，该操作只需要完成一次既可，后续调试无需执行）。
+- `yarn start`开启 React Native 本地调试。
+
+所有的组件调试以及组件示例都放在`examples`文件夹下，请开发者完成组件后，务必去该文件夹下添加相关示例，以便后续开发者使用。
+
+> 注意：项目目录中的`ios`和`android`为示例应用的原生应用入口，组件的开发目录在`src`。
