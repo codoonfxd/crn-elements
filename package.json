@@ -61,6 +61,8 @@
   },
   "dependencies": {
     "@types/color": "^3.0.0",
-    "color": "^3.1.0"
+    "@types/lodash": "^4.14.123",
+    "color": "^3.1.0",
+    "lodash": "^4.17.11"
   }
 }
