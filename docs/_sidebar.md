@@ -3,6 +3,7 @@
 - 组件
 
   - [Button](elements/button.md)
+  - [Gallery](elements/gallery.md)
 
 - [更新日志](CHANGELOG.md)
 
