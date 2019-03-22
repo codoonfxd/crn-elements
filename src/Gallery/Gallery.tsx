@@ -19,6 +19,8 @@ interface IProps {
   dataList: IGalleryUrl[] // 数据源
   gap?: number // 照片之间的间隔
   style?: ViewStyle
+  activeOpacity?: number
+  pictureStyle?: ViewStyle
   onPress?(index: number): any
 }
 
@@ -29,7 +31,13 @@ export class PictureGallary extends React.Component<IProps> {
    * 渲染图片
    */
   renderGallery = () => {
-    const { dataList, gap = 16, onPress = DEFAULT_ONPRESS } = this.props
+    const {
+      dataList,
+      gap = 16,
+      onPress = DEFAULT_ONPRESS,
+      activeOpacity = 0.7,
+      pictureStyle = {},
+    } = this.props
     /**
      * 只有一个照片
      */
@@ -38,8 +46,13 @@ export class PictureGallary extends React.Component<IProps> {
       return (
         <GalleryItem
           source={{ uri: dataList[0].url }}
-          style={[styles.pic, { width, marginLeft: gap, height: width }]}
+          style={[
+            styles.pic,
+            { width, marginLeft: gap, height: width },
+            pictureStyle,
+          ]}
           onPress={onPress.bind(this, 0)}
+          activeOpacity={activeOpacity}
         />
       )
     }
@@ -62,8 +75,10 @@ export class PictureGallary extends React.Component<IProps> {
                     height: width,
                     marginRight: idx === 0 ? 5 : 0,
                   },
+                  pictureStyle,
                 ]}
                 onPress={onPress.bind(this, idx)}
+                activeOpacity={activeOpacity}
               />
             )
           })}
@@ -87,8 +102,10 @@ export class PictureGallary extends React.Component<IProps> {
                 height: lWidth,
                 marginRight: 5,
               },
+              pictureStyle,
             ]}
             onPress={onPress.bind(this, 0)}
+            activeOpacity={activeOpacity}
           />
           <View style={{ flexDirection: 'column' }}>
             {map(dataList, (item, idx) => {
@@ -106,8 +123,10 @@ export class PictureGallary extends React.Component<IProps> {
                       height: sWidth,
                       marginBottom: idx === 1 ? 5 : 0,
                     },
+                    pictureStyle,
                   ]}
                   onPress={onPress.bind(this, idx + 1)}
+                  activeOpacity={activeOpacity}
                 />
               )
             })}
@@ -141,8 +160,10 @@ export class PictureGallary extends React.Component<IProps> {
                     marginRight: idx % 2 === 0 ? 5 : 0,
                     marginBottom: 5,
                   },
+                  pictureStyle,
                 ]}
                 onPress={onPress.bind(this, idx)}
+                activeOpacity={activeOpacity}
               />
             )
           })}
@@ -174,8 +195,10 @@ export class PictureGallary extends React.Component<IProps> {
                       marginRight: idx === 0 ? 5 : 0,
                       marginBottom: 5,
                     },
+                    pictureStyle,
                   ]}
                   onPress={onPress.bind(this, idx)}
+                  activeOpacity={activeOpacity}
                 />
               )
             })}
@@ -197,8 +220,10 @@ export class PictureGallary extends React.Component<IProps> {
                       marginRight: idx < 4 ? 4 : 0,
                       marginBottom: 4,
                     },
+                    pictureStyle,
                   ]}
                   onPress={onPress.bind(this, idx)}
+                  activeOpacity={activeOpacity}
                 />
               )
             })}
@@ -232,8 +257,10 @@ export class PictureGallary extends React.Component<IProps> {
                     marginRight: 4,
                     marginBottom: 4,
                   },
+                  pictureStyle,
                 ]}
                 onPress={onPress.bind(this, idx)}
+                activeOpacity={activeOpacity}
               />
             )
           })}
