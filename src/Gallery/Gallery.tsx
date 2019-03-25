@@ -9,7 +9,7 @@ import * as React from 'react'
 import { View, StyleSheet, ViewStyle } from 'react-native'
 import { map } from 'lodash'
 import { DEVICE_WIDTH } from '../lib/constant'
-import GalleryItem from './GalleryItem'
+import GalleryItem, { IImageRendererType } from './GalleryItem'
 
 interface IGalleryUrl {
   url: string
@@ -21,6 +21,7 @@ interface IProps {
   style?: ViewStyle
   activeOpacity?: number
   pictureStyle?: ViewStyle
+  imageRenderer?: IImageRendererType
   onPress?(index: number): any
 }
 
@@ -37,6 +38,7 @@ export class PictureGallary extends React.Component<IProps> {
       onPress = DEFAULT_ONPRESS,
       activeOpacity = 0.7,
       pictureStyle = {},
+      imageRenderer,
     } = this.props
     /**
      * 只有一个照片
@@ -53,6 +55,7 @@ export class PictureGallary extends React.Component<IProps> {
           ]}
           onPress={onPress.bind(this, 0)}
           activeOpacity={activeOpacity}
+          imageRenderer={imageRenderer}
         />
       )
     }
@@ -79,6 +82,7 @@ export class PictureGallary extends React.Component<IProps> {
                 ]}
                 onPress={onPress.bind(this, idx)}
                 activeOpacity={activeOpacity}
+                imageRenderer={imageRenderer}
               />
             )
           })}
@@ -106,6 +110,7 @@ export class PictureGallary extends React.Component<IProps> {
             ]}
             onPress={onPress.bind(this, 0)}
             activeOpacity={activeOpacity}
+            imageRenderer={imageRenderer}
           />
           <View style={{ flexDirection: 'column' }}>
             {map(dataList, (item, idx) => {
@@ -125,8 +130,9 @@ export class PictureGallary extends React.Component<IProps> {
                     },
                     pictureStyle,
                   ]}
-                  onPress={onPress.bind(this, idx + 1)}
+                  onPress={onPress.bind(this, idx)}
                   activeOpacity={activeOpacity}
+                  imageRenderer={imageRenderer}
                 />
               )
             })}
@@ -164,6 +170,7 @@ export class PictureGallary extends React.Component<IProps> {
                 ]}
                 onPress={onPress.bind(this, idx)}
                 activeOpacity={activeOpacity}
+                imageRenderer={imageRenderer}
               />
             )
           })}
@@ -199,6 +206,7 @@ export class PictureGallary extends React.Component<IProps> {
                   ]}
                   onPress={onPress.bind(this, idx)}
                   activeOpacity={activeOpacity}
+                  imageRenderer={imageRenderer}
                 />
               )
             })}
@@ -224,6 +232,7 @@ export class PictureGallary extends React.Component<IProps> {
                   ]}
                   onPress={onPress.bind(this, idx)}
                   activeOpacity={activeOpacity}
+                  imageRenderer={imageRenderer}
                 />
               )
             })}
@@ -261,6 +270,7 @@ export class PictureGallary extends React.Component<IProps> {
                 ]}
                 onPress={onPress.bind(this, idx)}
                 activeOpacity={activeOpacity}
+                imageRenderer={imageRenderer}
               />
             )
           })}

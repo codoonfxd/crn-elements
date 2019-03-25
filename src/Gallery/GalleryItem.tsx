@@ -13,19 +13,26 @@ import {
   ViewStyle,
 } from 'react-native'
 
+export type IImageRendererType = (source: ImageURISource) => React.ReactNode
+
 interface IProps {
   source: ImageURISource
   style?: ViewStyle | ViewStyle[]
   activeOpacity?: number
+  imageRenderer?: IImageRendererType
   onPress?(): any
 }
 
 export default class GalleryItem extends React.Component<IProps> {
   render() {
-    const { source, style, onPress, activeOpacity } = this.props
+    const { source, style, onPress, activeOpacity, imageRenderer } = this.props
     return (
       <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
-        <Image source={source} style={style} />
+        {imageRenderer ? (
+          imageRenderer(source)
+        ) : (
+          <Image source={source} style={style} />
+        )}
       </TouchableOpacity>
     )
   }
