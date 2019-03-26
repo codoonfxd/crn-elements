@@ -47,11 +47,15 @@ export const Demo = () => {
 
 ## Props
 
-|     参数      |                    说明                    |      类型      | 可选值 |  默认值   |
-| :-----------: | :----------------------------------------: | :------------: | :----: | :-------: |
-|   dataList    |                   数据源                   | IGalleryUrl[]  |   -    |   必填    |
-|      gap      |              组件与两侧的距离              |     number     |   -    |    16     |
-|     style     |           组件最外层的自定义样式           |   ViewStyle    |   -    |    {}     |
-| activeOpacity |             图片点击时的透明度             |     number     |   -    |    0.7    |
-| pictureStyle  |            图片组件的自定义样式            |    boolean     |   -    |   false   |
-|    onPress    | 图片点击时的回调，index 为点击图片的索引值 | (index) => any |   -    | undefined |
+|     参数      |                     说明                     |      类型      | 可选值 |  默认值   |
+| :-----------: | :------------------------------------------: | :------------: | :----: | :-------: |
+|   dataList    |                    数据源                    | IGalleryUrl[]  |   -    |   必填    |
+|      gap      |               组件与两侧的距离               |     number     |   -    |    16     |
+|    padding    |             与屏幕两端之间的距离             |     number     |   -    |     5     |
+|     type      |            分为铺满与平铺两种类型            |     string     |  full  |   tile    | full |
+|    oneLine    | 是否只一行展示图片（仅 type 为 tile 时可用） |    boolean     |        |   false   |
+|  renderExtra  |         在图片库容器中渲染自定义内容         |   ReactNode    |        |   null    |
+|     style     |            组件最外层的自定义样式            |   ViewStyle    |   -    |    {}     |
+| activeOpacity |              图片点击时的透明度              |     number     |   -    |    0.7    |
+| pictureStyle  |             图片组件的自定义样式             |    boolean     |   -    |   false   |
+|    onPress    |  图片点击时的回调，index 为点击图片的索引值  | (index) => any |   -    | undefined |
