@@ -7,7 +7,7 @@
  */
 import * as React from 'react'
 import { View, StyleSheet, ViewStyle } from 'react-native'
-import { map } from 'lodash'
+import { map, slice } from 'lodash'
 import { DEVICE_WIDTH } from '../lib/constant'
 import GalleryItem, { IImageRendererType } from './GalleryItem'
 
@@ -15,19 +15,73 @@ interface IGalleryUrl {
   url: string
 }
 
+/**
+ * full: 尽量铺满屏幕
+ * tile: 三张一行地平铺
+ */
+export type IGalleryType = 'full' | 'tile'
+
 interface IProps {
   dataList: IGalleryUrl[] // 数据源
-  gap?: number // 照片之间的间隔
+  gap?: number // 与屏幕两端之间的距离
+  padding?: number // 照片之间的间隔
   style?: ViewStyle
+  type?: IGalleryType
   activeOpacity?: number
   pictureStyle?: ViewStyle
   imageRenderer?: IImageRendererType
+  oneLine?: boolean // 是否只一行展示图片（仅type为tile时可用）
+  renderExtra?: React.ReactNode // 在图片库容器中渲染自定义内容
   onPress?(index: number): any
 }
 
 const DEFAULT_ONPRESS = () => null
 
 export class PictureGallary extends React.Component<IProps> {
+  renderTileGallery = () => {
+    const {
+      dataList,
+      gap = 16,
+      padding = 5,
+      onPress = DEFAULT_ONPRESS,
+      activeOpacity = 0.7,
+      pictureStyle = {},
+      imageRenderer,
+      oneLine = false,
+    } = this.props
+    const width = (DEVICE_WIDTH - 2 * gap - 2 * padding) / 3
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          marginLeft: gap,
+        }}
+      >
+        {map(slice(dataList, 0, oneLine ? 3 : dataList.length), (item, idx) => {
+          return (
+            <GalleryItem
+              key={idx}
+              source={{ uri: item.url }}
+              style={[
+                styles.pic,
+                {
+                  width,
+                  height: width,
+                  marginRight: padding,
+                  marginBottom: padding,
+                },
+                pictureStyle,
+              ]}
+              onPress={onPress.bind(this, idx)}
+              activeOpacity={activeOpacity}
+              imageRenderer={imageRenderer}
+            />
+          )
+        })}
+      </View>
+    )
+  }
   /**
    * 渲染图片
    */
@@ -39,6 +93,7 @@ export class PictureGallary extends React.Component<IProps> {
       activeOpacity = 0.7,
       pictureStyle = {},
       imageRenderer,
+      padding = 5,
     } = this.props
     /**
      * 只有一个照片
@@ -63,7 +118,7 @@ export class PictureGallary extends React.Component<IProps> {
      * 两个照片
      */
     if (dataList.length === 2) {
-      const width = (DEVICE_WIDTH - 2 * gap - 5) / 2
+      const width = (DEVICE_WIDTH - 2 * gap - padding) / 2
       return (
         <View style={{ flexDirection: 'row', marginLeft: gap }}>
           {map(dataList, (item, idx) => {
@@ -93,8 +148,8 @@ export class PictureGallary extends React.Component<IProps> {
      * 三个照片
      */
     if (dataList.length === 3) {
-      const sWidth = (DEVICE_WIDTH - 2 * gap - 10) / 3
-      const lWidth = sWidth * 2 + 5
+      const sWidth = (DEVICE_WIDTH - 2 * gap - 2 * padding) / 3
+      const lWidth = sWidth * 2 + padding
       return (
         <View style={{ flexDirection: 'row', marginLeft: gap }}>
           <GalleryItem
@@ -104,7 +159,7 @@ export class PictureGallary extends React.Component<IProps> {
               {
                 width: lWidth,
                 height: lWidth,
-                marginRight: 5,
+                marginRight: padding,
               },
               pictureStyle,
             ]}
@@ -126,7 +181,7 @@ export class PictureGallary extends React.Component<IProps> {
                     {
                       width: sWidth,
                       height: sWidth,
-                      marginBottom: idx === 1 ? 5 : 0,
+                      marginBottom: idx === 1 ? padding : 0,
                     },
                     pictureStyle,
                   ]}
@@ -144,7 +199,7 @@ export class PictureGallary extends React.Component<IProps> {
      * 四个照片
      */
     if (dataList.length === 4) {
-      const width = (DEVICE_WIDTH - 2 * gap - 5) / 2
+      const width = (DEVICE_WIDTH - 2 * gap - padding) / 2
       return (
         <View
           style={{
@@ -163,8 +218,8 @@ export class PictureGallary extends React.Component<IProps> {
                   {
                     width,
                     height: width,
-                    marginRight: idx % 2 === 0 ? 5 : 0,
-                    marginBottom: 5,
+                    marginRight: idx % 2 === 0 ? padding : 0,
+                    marginBottom: padding,
                   },
                   pictureStyle,
                 ]}
@@ -181,8 +236,8 @@ export class PictureGallary extends React.Component<IProps> {
      * 五个照片
      */
     if (dataList.length === 5) {
-      const lWidth = (DEVICE_WIDTH - 2 * gap - 5) / 2
-      const sWidth = (DEVICE_WIDTH - 2 * gap - 8) / 3
+      const lWidth = (DEVICE_WIDTH - 2 * gap - padding) / 2
+      const sWidth = (DEVICE_WIDTH - 2 * gap - padding) / 3
       return (
         <View style={{ marginLeft: gap }}>
           <View style={{ flexDirection: 'row' }}>
@@ -199,8 +254,8 @@ export class PictureGallary extends React.Component<IProps> {
                     {
                       width: lWidth,
                       height: lWidth,
-                      marginRight: idx === 0 ? 5 : 0,
-                      marginBottom: 5,
+                      marginRight: idx === 0 ? padding : 0,
+                      marginBottom: padding,
                     },
                     pictureStyle,
                   ]}
@@ -225,8 +280,8 @@ export class PictureGallary extends React.Component<IProps> {
                     {
                       width: sWidth,
                       height: sWidth,
-                      marginRight: idx < 4 ? 4 : 0,
-                      marginBottom: 4,
+                      marginRight: idx < 4 ? padding : 0,
+                      marginBottom: padding,
                     },
                     pictureStyle,
                   ]}
@@ -244,7 +299,7 @@ export class PictureGallary extends React.Component<IProps> {
      * 6 - 9个照片
      */
     if (dataList.length >= 6) {
-      const width = (DEVICE_WIDTH - 2 * gap - 8) / 3
+      const width = (DEVICE_WIDTH - 2 * gap - 2 * padding) / 3
       return (
         <View
           style={{
@@ -263,8 +318,8 @@ export class PictureGallary extends React.Component<IProps> {
                   {
                     width,
                     height: width,
-                    marginRight: 4,
-                    marginBottom: 4,
+                    marginRight: padding,
+                    marginBottom: padding,
                   },
                   pictureStyle,
                 ]}
@@ -280,8 +335,13 @@ export class PictureGallary extends React.Component<IProps> {
   }
 
   render() {
-    const { style = {} } = this.props
-    return <View style={style}>{this.renderGallery()}</View>
+    const { style = {}, type = 'full', renderExtra = null } = this.props
+    return (
+      <View style={[{ position: 'relative' }, style]}>
+        {type === 'full' ? this.renderGallery() : this.renderTileGallery()}
+        {renderExtra}
+      </View>
+    )
   }
 }
 
