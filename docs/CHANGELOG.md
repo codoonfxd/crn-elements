@@ -1,4 +1,18 @@
-# 0.3.0 (2019-03-26)
+# 0.4.0 (2019-03-28)
+
+
+### Features
+
+* **portal:** 新增Portal组件，用于推送组件至根结构，并修改了部分构建功能 ([61ba4e5](https://github.com/codoonfxd/crn-elements/commit/61ba4e5))
+
+
+
+## 0.3.1 (2019-03-27)
+
+
+### Bug Fixes
+
+* **gallery:** 优化lodash依赖的引用 ([79d1031](https://github.com/codoonfxd/crn-elements/commit/79d1031))
 
 
 ### Features
