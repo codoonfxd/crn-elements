@@ -5,7 +5,7 @@
 ## 用法
 
 ```javascript
-import { Gallery } from '@codoonfxd/crn-elements';
+import Gallery from '@codoonfxd/crn-elements/dist/Gallery';
 
 export const Demo = () => {
   return (

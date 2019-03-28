@@ -7,7 +7,8 @@
  */
 import * as React from 'react'
 import { View, StyleSheet, ViewStyle } from 'react-native'
-import { map, slice } from 'lodash'
+import map from 'lodash/map'
+import slice from 'lodash/slice'
 import { DEVICE_WIDTH } from '../lib/constant'
 import GalleryItem, { IImageRendererType } from './GalleryItem'
 

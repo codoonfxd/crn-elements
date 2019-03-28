@@ -5,7 +5,7 @@
 ## 用法
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return <Button title="按钮1" />;
@@ -19,7 +19,7 @@ export const Demo = () => {
 ### 绑定点击事件
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return (
@@ -38,7 +38,7 @@ export const Demo = () => {
 ![disabled&loading](../_images/elements/button/disabled&loading.png)
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return (
@@ -53,7 +53,7 @@ export const Demo = () => {
 ### 自定义样式
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return (
@@ -71,7 +71,7 @@ export const Demo = () => {
 ![fix-iphonex](../_images/elements/button/fix-iphonex.png)
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return <Button title="我是按钮" showBottomSpace />;
@@ -83,7 +83,7 @@ export const Demo = () => {
 ![ghost](../_images/elements/button/ghost.png)
 
 ```javascript
-import { Button } from '@codoonfxd/crn-elements';
+import Button from '@codoonfxd/crn-elements/dist/Button';
 
 export const Demo = () => {
   return <Button title="描边样式" ghost />;
