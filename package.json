@@ -52,6 +52,7 @@
     "jest-fetch-mock": "^2.1.1",
     "jest-react-native": "^18.0.0",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^8.1.5",
     "metro-react-native-babel-preset": "^0.53.1",
     "prettier": "^1.16.4",
     "prettier-tslint": "^0.4.2",
@@ -70,6 +71,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -80,9 +82,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run lint",
-      "npm run test",
       "npm run pretty-ts",
+      "npm run lint",
       "git add"
     ]
   },

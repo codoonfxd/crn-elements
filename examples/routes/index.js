@@ -1,6 +1,7 @@
 import HomeScreen from '../HomeScreen';
 import Button from '../Button';
 import Gallery from '../Gallery';
+import Portal from '../Portal';
 
 const routes = {
   Home: {
@@ -19,6 +20,12 @@ const routes = {
     screen: Gallery,
     navigationOptions: {
       title: 'Gallery',
+    },
+  },
+  Portal: {
+    screen: Portal,
+    navigationOptions: {
+      title: 'Portal',
     },
   },
 };
