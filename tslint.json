@@ -14,7 +14,7 @@
           "objects": "always",
           "arrays": "always",
           "exports": "always",
-          "imports": "false",
+          "imports": "always",
           "functions": "never",
           "typeLiterals": "ignore"
         },
