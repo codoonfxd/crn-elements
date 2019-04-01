@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-31 12:00:21
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-01 00:03:29
+ * @Last Modified time: 2019-04-01 15:59:43
  * @Content: Toast notification
  */
 import * as React from 'react'
@@ -146,11 +146,11 @@ export default class Toast extends React.Component<IToastProps, IToastState> {
 
     const paddingTopBottom = opacity.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 3],
+      outputRange: [0, 6],
     })
     const padding = opacity.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 6],
+      outputRange: [0, 10],
     })
     return (
       <View style={{ position: 'absolute', top: 0, left: 0 }}>

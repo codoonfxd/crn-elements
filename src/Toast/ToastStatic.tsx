@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-31 19:23:33
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-01 09:56:14
+ * @Last Modified time: 2019-04-01 15:58:52
  * @Content: the static methods of Toast
  */
 import * as React from 'react'
@@ -10,7 +10,6 @@ import { View, ActivityIndicator } from 'react-native'
 import { Omit } from 'lodash'
 
 import Toast, { IToastProps, DEFAULT_ANIMATE_DURATION } from './Toast'
-import { delay } from '../lib/utils'
 import Portal from '../Portal'
 
 export interface IToastOpenConfig extends Omit<IToastProps, 'visible'> {
@@ -69,8 +68,10 @@ class ToastStatic {
       const { animateDuration = DEFAULT_ANIMATE_DURATION } = animateConfig
       toastConfig.visible = false
       Portal.update(key, <Toast {...toastConfig} />)
-      await delay(animateDuration)
-      return Portal.remove(key)
+      // add "remove task" to the variable: this.cancelTask
+      this.cancelTask = setTimeout(() => {
+        Portal.remove(key)
+      }, animateDuration)
     }
   }
 
@@ -78,7 +79,7 @@ class ToastStatic {
    * show the loading status
    */
   showLoading = (msg?: string) => {
-    this.open({
+    return this.open({
       message: msg || '加载中',
       duration: 0,
       renderTop: (
@@ -95,7 +96,7 @@ class ToastStatic {
    * hide loading
    */
   hideLoading = () => {
-    this.destroy()
+    return this.destroy()
   }
 }
 
