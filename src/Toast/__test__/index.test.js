@@ -34,7 +34,7 @@ describe('<Toast />', () => {
 
   it(`deliver props successfully`, done => {
     const wrapper = shallow(<Portal />);
-    const duration = 500;
+    const duration = 300;
     const animateDuration = 200;
     const config = {
       message: 'deliver props',
@@ -60,6 +60,6 @@ describe('<Toast />', () => {
     setTimeout(() => {
       expect(wrapper.find(Toast).length).toBe(0);
       done();
-    }, duration + animateDuration);
+    }, duration + animateDuration + 100);
   });
 });
