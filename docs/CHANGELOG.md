@@ -1,9 +1,16 @@
-# 0.4.0 (2019-03-28)
+# 0.5.0 (2019-04-01)
+
+
+### Bug Fixes
+
+* **toast:** optimize destroy function of Toast ([4c1bf44](https://github.com/codoonfxd/crn-elements/commit/4c1bf44))
 
 
 ### Features
 
 * **portal:** 新增Portal组件，用于推送组件至根结构，并修改了部分构建功能 ([61ba4e5](https://github.com/codoonfxd/crn-elements/commit/61ba4e5))
+* **provider:** add component Provider ([114cfc6](https://github.com/codoonfxd/crn-elements/commit/114cfc6))
+* **toast:** add new component Toast ([6913bb0](https://github.com/codoonfxd/crn-elements/commit/6913bb0))
 
 
 
