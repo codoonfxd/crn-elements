@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-31 12:00:21
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-01 15:59:43
+ * @Last Modified time: 2019-04-01 18:03:03
  * @Content: Toast notification
  */
 import * as React from 'react'
@@ -157,7 +157,7 @@ export default class Toast extends React.Component<IToastProps, IToastState> {
         <Animated.View
           style={{
             position: 'absolute',
-            top: DEVICE_HEIGHT / 3,
+            top: DEVICE_HEIGHT / 2 - 50,
             width: DEVICE_WIDTH,
             paddingLeft: DEVICE_WIDTH / 8,
             paddingRight: DEVICE_WIDTH / 8,
@@ -209,10 +209,12 @@ export default class Toast extends React.Component<IToastProps, IToastState> {
           <View
             style={{
               width: DEVICE_WIDTH,
-              height: DEVICE_HEIGHT,
+              // make sure to take over the whole screen, the height is multiplied with 2
+              height: DEVICE_HEIGHT * 2,
               position: 'absolute',
               top: 0,
               left: 0,
+              zIndex: 9,
             }}
           />
         ) : null}
