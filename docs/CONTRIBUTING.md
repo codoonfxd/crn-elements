@@ -8,6 +8,8 @@
 
 **注意：**这里强调一下规范中的 scope 用法，这个值规定了本次改动的作用域，比如你新添加了一个组件 Demo，commit message 就大致可以填写成`feat(demo): 新增Demo组件`。
 
+**注意：**`commit message`以及代码中的注释最好使用**英文**。
+
 ## 分支管理
 
 > 如果是 codoonfxd 组内成员可以直接提交 commit 至分支，但是请谨慎操作，以免混入不符合规范的代码。如果不是组内成员，可以 Fork 项目后，提交 Pull Request，详细的操作可以参考[这篇文章](https://segmentfault.com/a/1190000000736629)。

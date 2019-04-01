@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, ScrollView, Text } from 'react-native';
-import { Portal, Button } from '../../src';
+import { Provider, Button, Portal } from '../../src';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from '../../src/lib/constant';
 
-class PortalScreen extends React.Component {
+class ProviderScreen extends React.Component {
   handleShowToast = msg => {
     const key = Portal.add(
       <View
@@ -41,16 +41,16 @@ class PortalScreen extends React.Component {
 
   render() {
     return (
-      <Portal style={{ flex: 1 }}>
+      <Provider style={{ flex: 1 }}>
         <ScrollView style={{ flex: 1 }}>
           <Button
             title="显示Toast"
             onPress={this.handleShowToast.bind(this, '我就是Toast')}
           />
         </ScrollView>
-      </Portal>
+      </Provider>
     );
   }
 }
 
-export default PortalScreen;
+export default ProviderScreen;
