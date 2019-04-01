@@ -4,8 +4,19 @@
 
 ## 用法
 
+为了使用该组件，必须先在**全局**添加 **Provider** 组件。
+
 ```javascript
 import Toast from '@codoonfxd/crn-elements/dist/Toast';
+import Provider from '@codoonfxd/crn-elements/dist/Provider';
+
+const RootComponent = () => {
+  return (
+    <Provider>
+      <YourComponent />
+    </Provider>
+  );
+};
 
 // 提示消息
 Toast.open({
