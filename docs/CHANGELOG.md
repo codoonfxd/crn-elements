@@ -1,8 +1,9 @@
-# 0.5.0 (2019-04-01)
+## 0.5.1 (2019-04-01)
 
 
 ### Bug Fixes
 
+* **toast:** fixed the position and mask style bug ([99cde56](https://github.com/codoonfxd/crn-elements/commit/99cde56))
 * **toast:** optimize destroy function of Toast ([4c1bf44](https://github.com/codoonfxd/crn-elements/commit/4c1bf44))
 
 
