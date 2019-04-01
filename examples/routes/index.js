@@ -2,6 +2,7 @@ import HomeScreen from '../HomeScreen';
 import Button from '../Button';
 import Gallery from '../Gallery';
 import Portal from '../Portal';
+import Toast from '../Toast';
 
 const routes = {
   Home: {
@@ -26,6 +27,12 @@ const routes = {
     screen: Portal,
     navigationOptions: {
       title: 'Portal',
+    },
+  },
+  Toast: {
+    screen: Toast,
+    navigationOptions: {
+      title: 'Toast',
     },
   },
 };
