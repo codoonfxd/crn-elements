@@ -5,6 +5,7 @@
   - [Button](elements/button.md)
   - [Gallery](elements/gallery.md)
   - [Toast](elements/toast.md)
+  - [Provider](elements/provider.md)
   - [Portal](elements/portal.md)
 
 - [更新日志](CHANGELOG.md)
