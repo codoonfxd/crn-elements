@@ -37,15 +37,21 @@ Portal.remove(key);
 
 ## 静态方法
 
-### `Portal.add(el: React.ReactNode): number`: 添加组件至根结构
+### Portal.add(el: React.ReactNode): number
+
+添加组件至根结构。
 
 该方法接收一个 React 元素，执行后会将该元素添加至 Portal 组件的根目录下，返回值为这次添加元素的 key 值，用于更新与删除元素。
 
-### `Portal.update(key: number, el: React.ReactNode)`: 更新根结构的组件
+### Portal.update(key: number, el: React.ReactNode)
+
+更新根结构的组件。
 
 该方法接收 key 和 el，执行后将更新根结构的组件。
 
-### `Portal.remove(key: number)`: 删除根结构上的组件
+### Portal.remove(key: number)
+
+删除根结构上的组件。
 
 该方法接收 key 参数，执行后将删除 key 值匹配的组件元素。
 
