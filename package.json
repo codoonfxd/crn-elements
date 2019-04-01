@@ -23,12 +23,12 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint": "tslint -c tslint.json 'src/**/*.ts{,x}'",
     "docs-dev": "docsify serve docs",
     "changelog": "conventional-changelog -i docs/CHANGELOG.md -s -t -r 0 -p angular",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "react-native run-ios",
-    "pretty-ts": "prettier-tslint fix 'src/**/*.ts' && prettier-tslint fix 'src/**/*.tsx'"
+    "pretty-ts": "prettier-tslint fix 'src/**/*.ts{,x}'"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
