@@ -4,6 +4,7 @@ import Gallery from '../Gallery';
 import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
+import Tag from '../Tag';
 
 const routes = {
   Home: {
@@ -40,6 +41,12 @@ const routes = {
     screen: Provider,
     navigationOptions: {
       title: 'Provider',
+    },
+  },
+  Tag: {
+    screen: Tag,
+    navigationOptions: {
+      title: 'Tag',
     },
   },
 };
