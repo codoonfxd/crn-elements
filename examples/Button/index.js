@@ -26,6 +26,7 @@ class ButtonScreen extends React.Component {
               }}
               textStyle={{ color: '#eee', fontWeight: '500' }}
               onPress={() => {}}
+              numberOfLines={2}
             />
           </View>
         </ScrollView>
