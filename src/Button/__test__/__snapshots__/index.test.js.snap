@@ -14,6 +14,8 @@ exports[`<Button /> 渲染快照 1`] = `
     Object {
       "backgroundColor": "rgb(0, 188, 113)",
       "height": 50,
+      "paddingLeft": 12,
+      "paddingRight": 12,
       "width": 750,
     }
   }
@@ -25,8 +27,6 @@ exports[`<Button /> 渲染快照 1`] = `
         "flexDirection": "row",
         "justifyContent": "center",
         "paddingBottom": 0,
-        "paddingLeft": 12,
-        "paddingRight": 12,
       }
     }
   >
