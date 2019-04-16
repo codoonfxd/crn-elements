@@ -2,11 +2,16 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-27 23:35:17
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-03-28 14:22:58
+ * @Last Modified time: 2019-04-16 14:38:11
  * @Content: 传送门组件（用于将组件显示与根结构下）
  */
 import * as React from 'react'
-import { View, ViewStyleProp, DeviceEventEmitter } from 'react-native'
+import {
+  View,
+  ViewStyleProp,
+  DeviceEventEmitter,
+  ViewStyle,
+} from 'react-native'
 
 import { PortalGuard } from './PortalGuard'
 import { ADD_TYPE, REMOVE_TYPE } from './constant'
@@ -93,9 +98,16 @@ export default class PortalComponent extends React.Component<
     return (
       <View style={{ flex: 1, position: 'relative', ...style }}>
         {children}
-        {map(elems, (item) =>
-          React.cloneElement(item.el as React.ReactElement, { key: item.key })
-        )}
+        {map(elems, (item) => {
+          const el = item.el as React.ReactElement
+          const prevStyle: ViewStyle = el.props.style || {}
+          const props = {
+            key: item.key,
+            // using zIndex, let the element added latter render on the upper layer
+            style: { ...prevStyle, zIndex: item.key },
+          }
+          return React.cloneElement(el, props)
+        })}
       </View>
     )
   }
