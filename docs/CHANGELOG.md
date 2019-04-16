@@ -1,17 +1,26 @@
-## 0.5.1 (2019-04-01)
+## 0.5.2 (2019-04-16)
 
 
 ### Bug Fixes
 
+* **toast:** fixed returned value bug of open func ([f913c18](https://github.com/codoonfxd/crn-elements/commit/f913c18))
 * **toast:** fixed the position and mask style bug ([99cde56](https://github.com/codoonfxd/crn-elements/commit/99cde56))
 * **toast:** optimize destroy function of Toast ([4c1bf44](https://github.com/codoonfxd/crn-elements/commit/4c1bf44))
 
 
 ### Features
 
+* **button:** new prop of Button and fix some bugs ([218f2d6](https://github.com/codoonfxd/crn-elements/commit/218f2d6))
+* **portal:** add portal position style: zIndex ([64eb114](https://github.com/codoonfxd/crn-elements/commit/64eb114))
+* **portal:** new component: Portal.Consumer ([5bc41fd](https://github.com/codoonfxd/crn-elements/commit/5bc41fd))
 * **portal:** 新增Portal组件，用于推送组件至根结构，并修改了部分构建功能 ([61ba4e5](https://github.com/codoonfxd/crn-elements/commit/61ba4e5))
 * **provider:** add component Provider ([114cfc6](https://github.com/codoonfxd/crn-elements/commit/114cfc6))
 * **toast:** add new component Toast ([6913bb0](https://github.com/codoonfxd/crn-elements/commit/6913bb0))
+
+
+### Performance Improvements
+
+* **prettier:** optimze the prettier-tslint speed ([e5b6cc9](https://github.com/codoonfxd/crn-elements/commit/e5b6cc9))
 
 
 
