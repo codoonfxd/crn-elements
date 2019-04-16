@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-31 19:23:33
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-01 15:58:52
+ * @Last Modified time: 2019-04-16 15:36:17
  * @Content: the static methods of Toast
  */
 import * as React from 'react'
@@ -29,7 +29,7 @@ class ToastStatic {
   /**
    * open toast
    */
-  open = (config: IToastOpenConfig) => {
+  open = (config: IToastOpenConfig): number => {
     const { duration = DEFAULT_DURATION, onClose, ...others } = config
     const toastProps: IToastProps = {
       visible: true,
@@ -56,6 +56,7 @@ class ToastStatic {
         onClose()
       }
     }
+    return this.key
   }
 
   /**

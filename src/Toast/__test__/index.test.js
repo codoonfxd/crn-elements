@@ -50,11 +50,15 @@ describe('<Toast />', () => {
         animateDuration,
       },
     };
-    Toast.open(config);
+    const portalKey = Toast.open(config);
     const toast = wrapper.find(Toast);
     const props = toast.props();
     mapKeys(omit(config, ['duration', 'onClose']), (value, key) => {
-      expect(props[key]).toBe(value);
+      if (key === 'style') {
+        expect(props[key]).toEqual({ ...value, zIndex: portalKey });
+      } else {
+        expect(props[key]).toBe(value);
+      }
     });
     expect(props.duration).toBe(0);
     setTimeout(() => {
