@@ -12,7 +12,7 @@ export const Demo = () => {
 };
 ```
 
-注意：按钮的默认宽度为屏幕宽度，默认高度为 50，默认的颜色为咕咚主题色`#00bc71`。
+注意：按钮容器的默认宽度为屏幕宽度，默认高度为 50，默认的颜色为咕咚主题色`#00bc71`，`paddingLeft`和`paddingRight`默认为`12`。
 
 ## 示例
 
@@ -102,3 +102,4 @@ export const Demo = () => {
 | showBottomSpace |       是否留出 iPhone X 底部的空间        |     boolean     |   -    |   false   |
 |     onPress     |             点击时触发的函数              |    function     |   -    | undefined |
 |      ghost      |             是否使用描边样式              |     boolean     |   -    |   false   |
+|  numberOfLines  |    按钮文字显示行数，即 Text 的该属性     |     number      |   -    |     1     |

@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-19 15:34:24
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-03-20 16:43:51
+ * @Last Modified time: 2019-04-11 14:35:37
  * @Content: 按钮
  */
 import * as React from 'react'
@@ -28,6 +28,8 @@ interface IProps {
   ghost?: boolean
   /** 添加IPhone X底部空间 */
   showBottomSpace?: boolean
+  /** 按钮文字显示行数 */
+  numberOfLines?: number
   onPress?(): any
 }
 
@@ -39,6 +41,7 @@ export default class Button extends React.Component<IProps> {
     loading: false,
     ghost: false,
     showBottomSpace: false,
+    numberOfLines: 1,
   }
 
   render() {
@@ -51,6 +54,7 @@ export default class Button extends React.Component<IProps> {
       loading = false,
       showBottomSpace = false,
       ghost = false,
+      numberOfLines,
     } = this.props
     const color = Color(style.backgroundColor || THEME_COLOR)
     const darkenColor = color.darken(0.15).string()
@@ -82,6 +86,8 @@ export default class Button extends React.Component<IProps> {
         style={{
           height: 50 + iphoneXBottomSpace,
           width: DEVICE_WIDTH,
+          paddingLeft: 12,
+          paddingRight: 12,
           ...ghostStyle,
           ...style,
           backgroundColor,
@@ -96,8 +102,6 @@ export default class Button extends React.Component<IProps> {
             flexDirection: 'row',
             justifyContent: 'center',
             flex: 1,
-            paddingLeft: 12,
-            paddingRight: 12,
             paddingBottom: iphoneXBottomSpace,
           }}
         >
@@ -117,7 +121,7 @@ export default class Button extends React.Component<IProps> {
                   ...textStyle,
                   ...ghostTextStyle,
                 }}
-                numberOfLines={1}
+                numberOfLines={numberOfLines}
               >
                 {title}
               </Text>

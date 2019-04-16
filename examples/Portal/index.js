@@ -47,6 +47,14 @@ class PortalScreen extends React.Component {
             title="显示Toast"
             onPress={this.handleShowToast.bind(this, '我就是Toast')}
           />
+          <View style={{ position: 'relative' }}>
+            <Text>Portal.Consumer's wrapper</Text>
+            <Portal.Consumer>
+              <View style={{ position: 'absolute', top: 0 }}>
+                <Text>I'm an element in portal.</Text>
+              </View>
+            </Portal.Consumer>
+          </View>
         </ScrollView>
       </Portal>
     );

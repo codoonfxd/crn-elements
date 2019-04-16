@@ -30,9 +30,9 @@ Toast.hideLoading();
 
 ## 静态方法
 
-### Toast.open(config: IToastOpenConfig)
+### Toast.open(config: IToastOpenConfig): number
 
-> IToastOpenConfig 详细类型信息请查看`ToastStatic.tsx`文件。
+> IToastOpenConfig 详细类型信息请查看`ToastStatic.tsx`文件。该函数返回值为一个 key，可以使用`Portal.remove(key)`直接关闭，不过最好请使用`Toast.destory()`关闭提示。
 
 打开一个 Toast 提示框，默认会在 2s 后关闭，如果需要长期存在，请将 **duration 传值为 0**。
 
