@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-27 23:35:17
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-16 14:38:11
+ * @Last Modified time: 2019-04-16 15:09:54
  * @Content: 传送门组件（用于将组件显示与根结构下）
  */
 import * as React from 'react'
@@ -14,6 +14,7 @@ import {
 } from 'react-native'
 
 import { PortalGuard } from './PortalGuard'
+import { PortalConsumer } from './PortalConsumer'
 import { ADD_TYPE, REMOVE_TYPE } from './constant'
 import map from 'lodash/map'
 
@@ -41,6 +42,7 @@ export default class PortalComponent extends React.Component<
   static add = portal.add
   static remove = portal.remove
   static update = portal.update
+  static Consumer = PortalConsumer
 
   /** 删除所有与Portal相关的事件绑定 */
   static removeAllListener = () => {
