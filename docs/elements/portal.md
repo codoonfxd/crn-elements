@@ -4,6 +4,8 @@
 
 ## 用法
 
+### Portal
+
 ```javascript
 import Portal from '@codoonfxd/crn-elements/dist/Portal';
 
@@ -19,6 +21,18 @@ export const Demo = () => {
 const key = Portal.add(<ComponentOne />);
 Portal.update(key, <ComponentTwo />);
 Portal.remove(key);
+```
+
+### Portal.Consumer
+
+使用该组件可以直接将子组件，也就是`children`渲染至**根节点**中，使用示例如下：
+
+```javascript
+<Portal.Consumer>
+  <View style={{ position: 'absolute', top: 0 }}>
+    <Text>I'm an element in portal.</Text>
+  </View>
+</Portal.Consumer>
 ```
 
 ## Props
