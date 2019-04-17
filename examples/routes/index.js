@@ -4,10 +4,11 @@ import Gallery from '../Gallery';
 import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
+import Modal from '../Modal'
 
 const routes = {
   Home: {
-    screen: HomeScreen,
+    screen: Modal,
     navigationOptions: {
       title: 'crnElements',
     },
@@ -42,6 +43,12 @@ const routes = {
       title: 'Provider',
     },
   },
+  Modal: {
+    screen: Modal,
+    navigationOptions: {
+      title: 'Modal'
+    }
+  }
 };
 
 export default routes;
