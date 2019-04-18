@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> 渲染快照 1`] = `
+<TextInput
+  allowFontScaling={true}
+  onChangeText={[Function]}
+  placeholder="输入框"
+  rejectResponderTermination={true}
+  selectionColor="#00bc71"
+  style={
+    Object {
+      "borderColor": "rgb(0, 188, 113)",
+      "borderRadius": 4,
+      "borderWidth": 1,
+      "height": 36,
+      "paddingHorizontal": 8,
+    }
+  }
+  underlineColorAndroid="transparent"
+  value=""
+/>
+`;
