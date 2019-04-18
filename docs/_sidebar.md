@@ -7,6 +7,7 @@
   - [Toast](elements/toast.md)
   - [Provider](elements/provider.md)
   - [Portal](elements/portal.md)
+  - [Input](elements/input.md)
 
 - [更新日志](CHANGELOG.md)
 

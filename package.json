@@ -28,6 +28,7 @@
     "changelog": "conventional-changelog -i docs/CHANGELOG.md -s -t -r 0 -p angular",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "react-native run-ios",
+    "run-android": "react-native run-android",
     "pretty-ts": "prettier-tslint fix 'src/**/*.ts{,x}'"
   },
   "devDependencies": {
