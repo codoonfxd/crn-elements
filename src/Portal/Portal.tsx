@@ -6,7 +6,7 @@
  * @Content: 传送门组件（用于将组件显示与根结构下）
  */
 import * as React from 'react'
-import { View, ViewStyleProp, DeviceEventEmitter } from 'react-native'
+import { View, ViewStyle, DeviceEventEmitter } from 'react-native'
 
 import { PortalGuard } from './PortalGuard'
 import { ADD_TYPE, REMOVE_TYPE } from './constant'
@@ -18,7 +18,7 @@ export interface IElType {
 }
 
 export interface IPortalProps {
-  style?: ViewStyleProp
+  style?: ViewStyle
   /** 卸载或加载的事件名 */
   eventName?: string
 }

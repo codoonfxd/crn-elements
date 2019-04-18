@@ -89,7 +89,7 @@ export default class Button extends React.Component<IProps> {
       <TouchableHighlight
         style={{
           height: 50 + iphoneXBottomSpace,
-          width: DEVICE_WIDTH,
+          // width: DEVICE_WIDTH,
           paddingLeft: 12,
           paddingRight: 12,
           ...ghostStyle,
