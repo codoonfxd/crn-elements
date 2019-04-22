@@ -1,8 +1,8 @@
 /*
  * @Author: JaneEyre(lsy@codoon.com)
- * @Date: 2019-04-17 10:56:00
+ * @Date: 2019-04-22 16:25:37
  * @Last Modified by: JaneEyre(lsy@codoon.com)
- * @Last Modified time: 2019-04-17 10:56:00
+ * @Last Modified time: 2019-04-22 20:50:20
  * @Content: Modal
  */
 import React from 'react'
@@ -14,12 +14,14 @@ import {
   ViewStyle,
   TextStyle,
   Easing,
+  EasingFunction,
 } from 'react-native'
 import Button from '../Button'
 import ModalStatic from './ModalStatic'
 
-import { THEME_COLOR, DEVICE_HEIGHT } from '../lib/constant'
+import { DEVICE_HEIGHT } from '../lib/constant'
 import styles from './style'
+import { Omit } from 'lodash'
 
 export interface IModalProps {
   // whether show the modal
@@ -36,6 +38,8 @@ export interface IModalProps {
   maskClosable?: boolean
   // modal animate duration
   animateDuration?: number
+  // animate easing function
+  animateEasing?: EasingFunction
   // the bottom button of the modal
   footButtons?: IModalFootItem[]
   // overall style of the modal
@@ -44,6 +48,8 @@ export interface IModalProps {
   maskStyle?: ViewStyle
   // body style of the modal
   style?: ViewStyle
+  // foot button style
+  footButtonStyle?: ViewStyle
 }
 
 export interface IModalFootItem {
@@ -55,6 +61,8 @@ export interface IModalFootItem {
   style?: ViewStyle
   // button text style
   textStyle?: TextStyle
+  // button underlayColor
+  underlayColor?: string
 }
 
 interface IState {
@@ -64,31 +72,23 @@ interface IState {
   position: Animated.Value
 }
 
-class Modal extends React.Component<IModalProps> {
-  static defaultProps: IModalProps = {
-    visible: false,
-    transparent: true,
-    animationType: 'slide',
-    // tslint:disable-next-line:no-empty
-    onClose: () => {},
+class Modal extends React.Component<IModalProps, IState> {
+  static defaultProps: Omit<IModalProps, 'visible' | 'onClose'> = {
     title: '',
-    maskClosable: true,
-    animateDuration: 100,
+    style: {},
+    wrapStyle: {},
+    footButtonStyle: {},
+    maskStyle: {},
     footButtons: [],
-    wrapStyle: styles.wrapper as ViewStyle,
-    maskStyle: styles.mask as ViewStyle,
-    style: styles.modalBody as ViewStyle,
+    transparent: true,
+    maskClosable: true,
+    animateDuration: 200,
+    animateEasing: Easing.elastic(0.8),
+    animationType: 'fade',
   }
 
   static alert = ModalStatic.alert
   static prompt = ModalStatic.prompt
-
-  public state: IState = {
-    visible: false,
-    scale: new Animated.Value(0),
-    opacity: new Animated.Value(0),
-    position: new Animated.Value(0),
-  }
 
   constructor(props: IModalProps) {
     super(props)
@@ -107,6 +107,10 @@ class Modal extends React.Component<IModalProps> {
     }
   }
 
+  /**
+   * toggle the modal display or hide
+   * @param { boolean } visible
+   */
   toggleShowModal = (visible: boolean) => {
     if (visible) {
       this.setState({ visible })
@@ -114,20 +118,60 @@ class Modal extends React.Component<IModalProps> {
     this.animateModal(visible)
   }
 
+  /**
+   * the callback after clicking the mask
+   */
+  onMaskClose = () => {
+    const { maskClosable, onClose } = this.props
+    if (maskClosable) {
+      onClose()
+    }
+  }
+
+  /**
+   * the callback after the bottom button of the modal is pressed
+   * @param { object } foot
+   */
+  onFootButtonPress = async (foot: IModalFootItem) => {
+    if (foot.onPress) {
+      await foot.onPress()
+    }
+    this.props.onClose()
+  }
+
+  /**
+   * get animate position value
+   * @param { boolean } visible
+   * @returns { number }
+   */
   getPosition = (visible: boolean): number => {
     return visible ? 0 : DEVICE_HEIGHT
   }
 
+  /**
+   * get animate opacity value
+   * @param { boolean } visible
+   * @returns { number }
+   */
   getOpacity = (visible: boolean): number => {
     return visible ? 1 : 0
   }
 
+  /**
+   * get animate scale value
+   * @param { boolean } visible
+   * @returns { number }
+   */
   getScale = (visible: boolean): number => {
     return visible ? 1 : 1.06
   }
 
+  /**
+   * The method of making the modal move in a preset animation mode
+   * @param { boolean } visible
+   */
   animateModal = (visible: boolean): void => {
-    const { animationType } = this.props
+    const { animationType, animateEasing } = this.props
     let animateAction
 
     if (animationType === 'fade') {
@@ -152,7 +196,7 @@ class Modal extends React.Component<IModalProps> {
         }),
         Animated.timing(this.state.position, {
           useNativeDriver: true,
-          easing: Easing.elastic(0.8),
+          easing: animateEasing,
           toValue: this.getPosition(visible),
           duration: this.props.animateDuration,
         }),
@@ -172,62 +216,34 @@ class Modal extends React.Component<IModalProps> {
   }
 
   /**
-   * the callback after clicking the mask
+   * method to render buttons at the bottom of the modal
+   * @param { object } foot
+   * @param { number } index
+   * @param { number } total
+   * @returns { JSX.Element }
    */
-  onMaskClose = () => {
-    const { maskClosable, onClose } = this.props
-    if (maskClosable) {
-      onClose()
-    }
-  }
-
-  /**
-   * the callback after the bottom button of the modal is pressed
-   * @param: foot {object}
-   */
-  onFootButtonPress = async (foot: IModalFootItem) => {
-    if (foot.onPress) {
-      await foot.onPress()
-    }
-    this.props.onClose()
-  }
-
-  getFootButtonStyle = (
+  renderFootButtonItem = (
     foot: IModalFootItem,
     index: number,
     total: number
-  ): ViewStyle => {
-    const isFirstButton = index === 0
+  ) => {
     const isLastButton = index === total - 1
-    return {
-      ...(styles.footButton as object),
-      borderRightWidth: isLastButton ? 0 : 1,
-      borderBottomLeftRadius: isFirstButton ? 5 : 0,
-      borderBottomRightRadius: isLastButton ? 5 : 0,
-      ...foot.style,
-    } as ViewStyle
-  }
+    const buttonStyle: object = isLastButton
+      ? styles.footConfirmButton
+      : styles.footCancelButton
+    const textStyle: object = isLastButton
+      ? styles.footConfirmText
+      : styles.footCancelText
 
-  getFootChild = () => {
-    const { footButtons } = this.props
-    if (!(footButtons && footButtons.length)) {
-      return null
-    }
     return (
-      <View style={styles.footButtonContaier}>
-        {footButtons.map((foot, index) => {
-          return (
-            <Button
-              title={foot.text}
-              key={index}
-              style={this.getFootButtonStyle(foot, index, footButtons.length)}
-              onPress={this.onFootButtonPress.bind(this, foot)}
-              underlayColor={'#e1fff3'}
-              textStyle={{ color: THEME_COLOR, ...foot.textStyle }}
-            />
-          )
-        })}
-      </View>
+      <Button
+        key={index}
+        title={foot.text}
+        underlayColor={foot.underlayColor}
+        style={{ ...buttonStyle, ...foot.style } as ViewStyle}
+        onPress={this.onFootButtonPress.bind(this, foot)}
+        textStyle={{ ...textStyle, ...foot.textStyle } as ViewStyle}
+      />
     )
   }
 
@@ -240,12 +256,15 @@ class Modal extends React.Component<IModalProps> {
       wrapStyle,
       transparent,
       animationType,
+      footButtons,
+      footButtonStyle,
     } = this.props
 
     if (!visible) {
       return null
     }
     const opacity = animationType === 'none' ? 1 : this.state.opacity
+    const total = footButtons ? footButtons.length : 0
     const animateMap = {
       none: {},
       fade: {
@@ -278,7 +297,13 @@ class Modal extends React.Component<IModalProps> {
             </View>
           ) : null}
           <View style={styles.modalContent}>{this.props.children}</View>
-          {this.getFootChild()}
+          <View style={[styles.footButtonContaier, footButtonStyle]}>
+            {footButtons && footButtons.length
+              ? footButtons.map((foot, index) => {
+                  return this.renderFootButtonItem(foot, index, total)
+                })
+              : null}
+          </View>
         </Animated.View>
       </View>
     )

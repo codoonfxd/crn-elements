@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ViewStyle, Easing } from 'react-native'
 
 import Modal from '../../src/Modal'
 import Button from '../../src/Button'
@@ -12,6 +12,8 @@ interface IState {
   visible2: boolean
   visible3: boolean
   visible4: boolean
+  visible5: boolean
+  value: string
 }
 
 class ModalScreen extends React.Component {
@@ -20,6 +22,8 @@ class ModalScreen extends React.Component {
     visible2: false,
     visible3: false,
     visible4: false,
+    visible5: false,
+    value: '',
   }
 
   // 弹框底部按钮
@@ -53,9 +57,26 @@ class ModalScreen extends React.Component {
 
   onAlertPress = () => {
     Modal.alert({
-      title: 'alert',
-      subtitle: 'alert subtitle',
+      title: 'alert title',
+      content: 'alert content',
       footButtons: this.footButtons,
+      contentStyle: {
+        color: '#9a9a9a',
+        fontSize: 12,
+      } as ViewStyle,
+    })
+  }
+
+  onModalPrompt = () => {
+    Modal.prompt({
+      value: this.state.value,
+      onValueChange: (value: string) => {
+        this.setState({ value })
+      },
+      title: 'title',
+      content: 'content',
+      footButtons: this.footButtons,
+      placeholder: 'placeholder',
     })
   }
 
@@ -100,7 +121,15 @@ class ModalScreen extends React.Component {
 
           <Button
             title="Modal.prompt"
-            onPress={this.onPress}
+            onPress={this.onModalPrompt}
+            style={{ marginTop: 10, marginBottom: 10 }}
+          />
+
+          <Button
+            title="Custom Modal FootButton"
+            onPress={() => {
+              this.setState({ visible5: true })
+            }}
             style={{ marginTop: 10, marginBottom: 10 }}
           />
 
@@ -190,6 +219,63 @@ class ModalScreen extends React.Component {
                   this.setState({ visible3: false })
                 }}
               />
+            </View>
+          </Modal>
+
+          <Modal
+            visible={this.state.visible5}
+            title="弹窗title"
+            transparent={true}
+            animationType={'fade'}
+            style={{ width: 300 }}
+            footButtonStyle={{
+              borderColor: '#f2f2f2',
+              borderTopWidth: 1,
+              borderStyle: 'solid',
+              borderRadius: 5,
+              overflow: 'hidden',
+              paddingVertical: 0,
+              paddingHorizontal: 0,
+            }}
+            footButtons={[
+              {
+                text: '取消',
+                underlayColor: '#e1fff3',
+                style: {
+                  borderWidth: 0,
+                  borderRightWidth: 1,
+                  backgroundColor: '#fff',
+                  borderRadius: 0,
+                  marginRight: 0,
+                },
+                textStyle: {
+                  color: '#00bc71',
+                },
+              },
+              {
+                text: '确认',
+                underlayColor: '#e1fff3',
+                style: {
+                  marginLeft: 0,
+                  borderWidth: 0,
+                  backgroundColor: '#fff',
+                  borderRadius: 0,
+                },
+                textStyle: {
+                  color: '#00bc71',
+                },
+              },
+            ]}
+            animateDuration={300}
+            onClose={() => {
+              this.setState({ visible5: false })
+            }}
+          >
+            <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+              <Text>modal content.....</Text>
+              <Text>modal content.....</Text>
+              <Text>modal content.....</Text>
+              <Text>modal content.....</Text>
             </View>
           </Modal>
         </View>

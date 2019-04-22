@@ -22,32 +22,33 @@ const styles = StyleSheet.create({
   maskWhite: {
     backgroundColor: WHITE_COLOR,
   },
-  modalContent: {},
+  modalContent: {
+    justifyContent: 'flex-start',
+  },
   footButtonContaier: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderColor: '#f2f2f2',
-    borderTopWidth: 1,
-    borderStyle: 'solid',
+    paddingVertical: 16,
+    paddingHorizontal: 16,
   },
-  footButton: {
+  footCancelButton: {
     flex: 1,
     backgroundColor: WHITE_COLOR,
     borderColor: '#f2f2f2',
-    borderRightWidth: 1,
+    borderWidth: 1,
+    borderRadius: 30,
     borderStyle: 'solid',
+    marginRight: 16,
   },
-  footFirstButton: {
-    borderBottomLeftRadius: 5,
+  footConfirmButton: {
+    flex: 1,
+    borderRadius: 35,
+    backgroundColor: THEME_COLOR,
   },
-  footLastButton: {
-    borderBottomRightRadius: 5,
-    borderRightWidth: 0,
+  footCancelText: {
+    color: '#7d7d7d',
   },
-  footText: {
-    color: THEME_COLOR,
-  },
-  activeFootText: {
+  footConfirmText: {
     color: WHITE_COLOR,
   },
   modalBody: {
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   modalTitle: {
-    color: THEME_COLOR,
+    color: '#222',
   },
 })
 
