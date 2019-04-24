@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigator /> snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "borderBottomWidth": 1,
+      "borderColor": "#f2f2f2",
+      "borderStyle": "solid",
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "paddingLeft": 16,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 2,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#222",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      title
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "flex-end",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "paddingRight": 16,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`<Navigator> snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "borderBottomWidth": 1,
+      "borderColor": "#f2f2f2",
+      "borderStyle": "solid",
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "paddingLeft": 16,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 2,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#222",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      title
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "flex-end",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "paddingRight": 16,
+      }
+    }
+  />
+</View>
+`;

@@ -1,17 +1,12 @@
 /*
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-27 23:35:17
- * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-16 15:09:54
+ * @Last Modified by: JaneEyre(lsy@codoon.com)
+ * @Last Modified time: 2019-04-24 10:43:25
  * @Content: 传送门组件（用于将组件显示与根结构下）
  */
 import * as React from 'react'
-import {
-  View,
-  ViewStyleProp,
-  DeviceEventEmitter,
-  ViewStyle,
-} from 'react-native'
+import { View, DeviceEventEmitter, ViewStyle } from 'react-native'
 
 import { PortalGuard } from './PortalGuard'
 import { PortalConsumer } from './PortalConsumer'
@@ -24,7 +19,7 @@ export interface IElType {
 }
 
 export interface IPortalProps {
-  style?: ViewStyleProp
+  style?: ViewStyle
   /** 卸载或加载的事件名 */
   eventName?: string
 }
