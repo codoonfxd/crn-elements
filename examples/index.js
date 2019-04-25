@@ -3,7 +3,8 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'; // 
 import routes from './routes';
 
 const RootStack = createStackNavigator(routes, {
-  initialRouteName: 'Home',
+  initialRouteName: 'PickerView',
+  // initialRouteName: 'Home',
 });
 
 const AppContainer = createAppContainer(RootStack);
