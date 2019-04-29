@@ -2,21 +2,27 @@
  * @Author: liuyz
  * @Date: 2019-04-18 14:42:43
  * @Last Modified by: liuyz
- * @Last Modified time: 2019-04-22 17:02:04
+ * @Last Modified time: 2019-04-29 11:00:58
  */
-
 import * as React from 'react'
-import { View, ViewStyle, Platform, StyleSheet, PickerIOS } from 'react-native'
+import {
+  View,
+  ViewStyle,
+  TextStyle,
+  Platform,
+  StyleSheet,
+  PickerIOS,
+} from 'react-native'
 
 import PickerAndroid from './PickerAndroid'
+import { DEVICE_WIDTH as width } from '../lib/constant'
 
 const Picker = Platform.OS === 'ios' ? PickerIOS : PickerAndroid
-// const Picker = PickerIOS
 const PickerItem = Picker.Item
 
 interface IProps {
-  itemStyle?: ViewStyle
-
+  pickerStyle?: ViewStyle
+  itemStyle?: TextStyle
   pickerData: [any]
   selectedValue: any
   onValueChange(value: object, index: number): any
@@ -60,12 +66,14 @@ export default class PickerView extends React.Component<IProps, IState> {
 
   renderPicker() {
     const { pickerData } = this.state
+    const count = pickerData.length
     return pickerData.map((item: [], index: number) => {
       return (
-        <View style={styles.pickerWheel} key={index}>
+        <View style={[styles.pickerWheel, this.props.pickerStyle]} key={index}>
           <Picker
             itemStyle={{
-              fontSize: 25,
+              fontSize: 24,
+              width: width / count,
               textAlign: 'center',
               fontWeight: 'bold',
               ...this.props.itemStyle,

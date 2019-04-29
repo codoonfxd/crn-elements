@@ -21,7 +21,6 @@
     "url": "https://github.com/codoonfxd/crn-elements"
   },
   "scripts": {
-    "android": "expo start --android",
     "test": "jest",
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts{,x}'",
@@ -29,7 +28,8 @@
     "changelog": "conventional-changelog -i docs/CHANGELOG.md -s -t -r 0 -p angular",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "react-native run-ios",
-    "run-android": "react-native run-android",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
     "pretty-ts": "prettier-tslint fix 'src/**/*.ts{,x}'"
   },
   "devDependencies": {
@@ -98,7 +98,8 @@
     "color": "^3.1.0",
     "lodash": "^4.17.11",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.9.1"
+    "react-navigation": "^3.9.1",
+    "sinon": "^7.3.2"
   },
   "jest": {
     "preset": "react-native",

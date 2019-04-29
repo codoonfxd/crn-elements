@@ -1,9 +1,15 @@
+/*
+ * @Author: liuyz
+ * @Date: 2019-04-29 11:00:31
+ * @Last Modified by: liuyz
+ * @Last Modified time: 2019-04-29 11:00:59
+ */
 import * as React from 'react'
 import {
   Text,
   View,
   ViewStyle,
-  Platform,
+  TextStyle,
   StyleSheet,
   PanResponder,
   GestureResponderEvent,
@@ -12,19 +18,14 @@ import {
 
 import PickerAndroidItem from './PickerAndroidItem'
 
-import {
-  DEVICE_WIDTH as width,
-  DEVICE_HEIGHT as height,
-} from '../lib/constant'
+import { DEVICE_WIDTH as width } from '../lib/constant'
 
 const ratio = PixelRatio.get()
 
 interface IProps {
-  children: React.ReactChildren
+  children: any
   pickerStyle?: ViewStyle
-  itemStyle?: ViewStyle
-
-  pickerData: [any]
+  itemStyle?: TextStyle
   selectedValue: any
   onValueChange(value: object, index: number): any
 }
@@ -32,8 +33,6 @@ interface IProps {
 interface IState {
   selectedIndex: number
   pickerData: any[]
-  // pickerStyle: ViewStyle
-  // itemStyle: ViewStyle
   onValueChange(value: object, index: number): any
 }
 
@@ -84,8 +83,6 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
         {
           selectedIndex: nextState.selectedIndex,
           pickerData: nextState.pickerData,
-          // pickerStyle: nextState.pickerStyle,
-          // itemStyle: nextState.itemStyle,
           onValueChange: nextState.onValueChange,
         },
         context,
@@ -94,8 +91,6 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
         {
           selectedIndex: this.state.selectedIndex,
           pickerData: this.state.pickerData,
-          // pickerStyle: this.state.pickerStyle,
-          // itemStyle: this.state.itemStyle,
           onValueChange: this.state.onValueChange,
         },
         this.context,
@@ -106,8 +101,6 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
   getStateFromProps(props: IProps) {
     let selectedIndex = 0
     const pickerData: any[] = []
-    // const pickerStyle = props.pickerStyle
-    // const itemStyle = props.itemStyle
     const onValueChange = props.onValueChange
     React.Children.forEach(props.children, (child: any, index) => {
       if (child.props.value === props.selectedValue) {
@@ -120,15 +113,13 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
     return {
       selectedIndex,
       pickerData,
-      // pickerStyle,
-      // itemStyle,
       onValueChange,
     }
   }
 
   _move(dy: number) {
     const index = this.index
-    this.middleHeight = Math.abs(-index * 40 + dy)
+    this.middleHeight = Math.abs(-index * 38 + dy)
     if (this.up) {
       this.up.setNativeProps({
         style: {
@@ -139,7 +130,7 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
     if (this.middle) {
       this.middle.setNativeProps({
         style: {
-          marginTop: -index * 40 + dy,
+          marginTop: -index * 38 + dy,
         },
       })
     }
@@ -156,9 +147,8 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
     const _index = this.index
     const diff = _index - index
     let marginValue
-    const that = this
     if (diff && !this.isMoving) {
-      marginValue = diff * 40
+      marginValue = diff * 38
       this._move(marginValue)
       this.index = index
       this._onValueChange()
@@ -184,11 +174,11 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
     }
     // turn down
     if (dy > 0) {
-      this._move(dy > this.index * 40 ? this.index * 40 : dy)
+      this._move(dy > this.index * 38 ? this.index * 38 : dy)
     } else {
       this._move(
-        dy < (this.index - this.state.pickerData.length + 1) * 40
-          ? (this.index - this.state.pickerData.length + 1) * 40
+        dy < (this.index - this.state.pickerData.length + 1) * 38
+          ? (this.index - this.state.pickerData.length + 1) * 38
           : dy
       )
     }
@@ -197,9 +187,9 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
   _handlePanResponderRelease(evt: GestureResponderEvent, gestureState: any) {
     const middleHeight = this.middleHeight
     this.index =
-      middleHeight % 40 >= 20
-        ? Math.ceil(middleHeight / 40)
-        : Math.floor(middleHeight / 40)
+      middleHeight % 38 >= 20
+        ? Math.ceil(middleHeight / 38)
+        : Math.floor(middleHeight / 38)
     this._move(0)
     this._onValueChange()
   }
@@ -267,7 +257,7 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
       height: length * 30,
     }
     const middleViewStyle = {
-      marginTop: -index * 40,
+      marginTop: -index * 38,
     }
     const downViewStyle = {
       marginTop: (-index - 1) * 30,
@@ -275,7 +265,7 @@ export default class PickerAndroid extends React.Component<IProps, IState> {
     }
 
     return (
-      // total to be 90*2+40=220 height
+      // total to be 90*2+38=220 height
       <View
         style={[styles.container, this.props.pickerStyle]}
         {...this._panResponder.panHandlers}
@@ -344,7 +334,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   middle: {
-    height: 40,
+    height: 38,
     width,
     overflow: 'hidden',
     borderColor: '#aaa',
@@ -352,15 +342,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1 / ratio,
   },
   middleView: {
-    height: 40,
+    height: 38,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   middleText: {
-    paddingTop: 0,
-    height: 40,
+    alignSelf: 'center',
+    height: 38,
     color: '#000',
-    fontSize: 28,
+    fontSize: 24,
+    paddingTop: 0,
     paddingBottom: 0,
     marginTop: 0,
     marginBottom: 0,

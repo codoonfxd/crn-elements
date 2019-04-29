@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "crn-comp",
-    "slug": "expo-demo",
+    "name": "crnElements",
+    "slug": "crnElements-demo",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
