@@ -2,7 +2,7 @@
  * @Author: liuyz
  * @Date: 2019-04-17 17:28:47
  * @Last Modified by: liuyz
- * @Last Modified time: 2019-04-18 11:44:01
+ * @Last Modified time: 2019-04-29 13:45:32
  */
 
 import * as React from 'react'
@@ -11,26 +11,18 @@ import Color from 'color'
 import { THEME_COLOR } from '../lib/constant'
 
 interface IProps extends TextInputProperties {
+  text?: string
   style?: ViewStyle
   onChangeText(text: string): any
 }
 
-export interface IState {
-  text: string
-}
-
-export default class Input extends React.Component<IProps, IState> {
+export default class Input extends React.Component<IProps> {
   inputRef: React.ReactNode
   constructor(props: IProps) {
     super(props)
-
-    this.state = {
-      text: '',
-    }
   }
 
   textChange(text: string): void {
-    this.setState({ text })
     if (this.props.onChangeText) {
       this.props.onChangeText(text)
     }
@@ -38,6 +30,7 @@ export default class Input extends React.Component<IProps, IState> {
 
   render() {
     const {
+      text = '',
       placeholder = '请输入内容',
       selectionColor,
       style = {},
@@ -45,7 +38,6 @@ export default class Input extends React.Component<IProps, IState> {
     const color = Color(style.borderColor || THEME_COLOR)
     const borderColor = color.string()
 
-    const { text } = this.state
     return (
       <TextInput
         ref={(el: React.ReactNode) => (this.inputRef = el)}

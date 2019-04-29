@@ -12,7 +12,8 @@ class InputScreen extends React.Component {
     return (
       <View style={{ flex: 1, paddingHorizontal: 20 }}>
         <View style={{ height: 16 }} />
-        <Input ref="0" placeholder="第一个有边框输入框" 
+        <Input ref="0" placeholder="第一个有边框输入框"
+          text={'第一个输入框的值'}
           onSubmitEditing={() => this.focusNextField('1')}
         />
         <View style={{ height: 16 }} />

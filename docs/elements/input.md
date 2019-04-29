@@ -12,7 +12,8 @@ export const Demo = () => {
     this.refs[nextField].inputRef.focus();
   };
   return (
-    <Input ref="0" placeholder="第一个有边框输入框" 
+    <Input ref="0" placeholder="第一个有边框输入框"
+      text={'传入值'}
       onSubmitEditing={() => this.focusNextField('1')}
     />
     <Input ref="1" placeholder="第一个有边框输入框" />
@@ -54,5 +55,6 @@ export const Demo = () => {
 
 |      参数       |                   说明                    |      类型       | 可选值 |  默认值   |
 | :-------------: | :---------------------------------------: | :-------------: | :----: | :-------: |
+|      text      | input传入值 |    String    |   -    |    ''     |
 |      style      | 按钮样式 |    ViewStyle    |   -    |    {}     |
 |    onChangeText    |     value值回调函数      |    function    |   -    |    -     |
