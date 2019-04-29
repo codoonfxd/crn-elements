@@ -1,10 +1,10 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Input from '../Input';
 
 describe('<Input />', () => {
-  it('渲染快照', () => {
-    const tree = renderer.create(<Input placeholder="输入框" />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('renders three <Input /> components', () => {
+    const wrapper = shallow(<Input />);
+    expect(wrapper.find(<div/>).length).toBe(0);
   });
 });

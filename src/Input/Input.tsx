@@ -2,7 +2,7 @@
  * @Author: liuyz
  * @Date: 2019-04-17 17:28:47
  * @Last Modified by: liuyz
- * @Last Modified time: 2019-04-29 13:45:32
+ * @Last Modified time: 2019-04-29 13:58:54
  */
 
 import * as React from 'react'
@@ -12,6 +12,7 @@ import { THEME_COLOR } from '../lib/constant'
 
 interface IProps extends TextInputProperties {
   text?: string
+  placeholder?: string
   style?: ViewStyle
   onChangeText(text: string): any
 }
