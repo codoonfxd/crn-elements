@@ -24,7 +24,7 @@ describe("<Navigator />", () => {
       </View>
     )
     const wrapper = shallow(<Navigator leftButton={leftButton} />);
-    expect(wrapper.contains(leftButtonChild)).toBe(true);
+    expect(wrapper.contains(leftButton)).toBe(true);
   });
 
   it("should render left button correctly when the leftbutton as a react class component is passed", () => {
