@@ -2,7 +2,7 @@
  * @Author: JaneEyre(lsy@codoon.com)
  * @Date: 2019-04-23 11:19:22
  * @Last Modified by: JaneEyre(lsy@codoon.com)
- * @Last Modified time: 2019-06-12 13:32:41
+ * @Last Modified time: 2019-06-12 13:47:28
  * @Content: Navigator
  */
 import React, { ReactNode } from 'react'
@@ -37,6 +37,8 @@ export interface INavigatorProps {
   leftButtonStyle?: ViewStyle
   // left button
   leftButton?: IButtonType
+  // left button press callback
+  onPress?: () => void
 }
 
 const ARROW_BACK =
@@ -79,10 +81,15 @@ class Navigator extends React.Component<INavigatorProps> {
       rightButton,
       leftButton,
       leftButtonStyle,
+      rightButtonStyle,
+      onPress,
     } = this.props
 
     const defaultLeftButton = (
-      <TouchableOpacity style={[styles.leftButtonContainer, leftButtonStyle]}>
+      <TouchableOpacity
+        style={[styles.leftButtonContainer, leftButtonStyle]}
+        onPress={onPress}
+      >
         <Image source={{ uri: ARROW_BACK }} style={styles.arrowBack} />
       </TouchableOpacity>
     )
@@ -114,9 +121,7 @@ class Navigator extends React.Component<INavigatorProps> {
             </Animated.Text>
           </View>
 
-          <View
-            style={[styles.rightButtonContainer, this.props.rightButtonStyle]}
-          >
+          <View style={[styles.rightButtonContainer, rightButtonStyle]}>
             {rightButton && this.getButtonComponent(rightButton)}
           </View>
         </Animated.View>

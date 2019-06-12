@@ -6,6 +6,7 @@ import {
   ScrollView,
   Animated,
   TouchableOpacity,
+  Alert,
 } from 'react-native'
 import Navigator from '../../src/Navigator'
 
@@ -46,7 +47,12 @@ class NavigatorExample extends React.Component {
           >
             <Text style={{ fontWeight: 'bold' }}>default:</Text>
           </View>
-          <Navigator title="Navigator Title" />
+          <Navigator
+            title="Navigator Title"
+            onPress={() => {
+              Alert.alert('2')
+            }}
+          />
 
           <View
             style={{ marginBottom: 40, marginTop: 40, paddingHorizontal: 10 }}
@@ -55,7 +61,7 @@ class NavigatorExample extends React.Component {
           </View>
           <Navigator
             title="Navigator Title3"
-            style={{ backgroundColor: 'red' }}
+            style={{ backgroundColor: '#00bc71' }}
             titleStyle={{ color: '#fff' }}
             leftButton={
               <TouchableOpacity>

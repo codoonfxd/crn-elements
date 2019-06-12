@@ -33,16 +33,16 @@ const style = StyleSheet.create({
   },
   leftButtonContainer: {
     flex: 1,
+    height: 50,
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingLeft: 16,
   },
   rightButtonContainer: {
     flex: 1,
+    height: 50,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-end',
-    paddingRight: 16,
   },
   absolute: {
     position: 'absolute',
