@@ -14,6 +14,7 @@ const X_WIDTH = 375 // iphonex
 const X_HEIGHT = 812 // iphonex
 const XSMAX_WIDTH = 414 // iphonex_max
 const XSMAX_HEIGHT = 896 // iphonex_max
+
 /**
  * 是否是iPhone X
  */

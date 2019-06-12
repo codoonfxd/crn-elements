@@ -4,6 +4,7 @@ import Gallery from '../Gallery';
 import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
+import Navigator from '../Navigator'
 
 const routes = {
   Home: {
@@ -42,6 +43,12 @@ const routes = {
       title: 'Provider',
     },
   },
+  Navigator: {
+    screen: Navigator,
+    navigationOptions: {
+      title: 'Navigator'
+    }
+  }
 };
 
 export default routes;
