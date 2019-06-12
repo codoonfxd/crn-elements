@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Text, Image, ScrollView, Animated } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Animated,
+  TouchableOpacity,
+} from 'react-native'
 import Navigator from '../../src/Navigator'
 
 const IMG_URL =
@@ -9,10 +16,6 @@ const IMG_URL2 =
 
 interface IState {
   scrollY: Animated.Value
-}
-
-const ImageComp = () => {
-  return <Image source={{ uri: IMG_URL }} style={{ width: 20, height: 20 }} />
 }
 
 class NavigatorExample extends React.Component {
@@ -26,7 +29,7 @@ class NavigatorExample extends React.Component {
       <View>
         <Navigator title="Absolute Navigator" absolute />
         <ScrollView
-          style={{ paddingTop: 20 }}
+          style={{ paddingTop: 30 }}
           scrollEventThrottle={10}
           onScroll={Animated.event([
             {
@@ -52,10 +55,20 @@ class NavigatorExample extends React.Component {
           </View>
           <Navigator
             title="Navigator Title3"
-            leftButton={{
-              children: ImageComp,
-              activeOpacity: 1,
-            }}
+            style={{ backgroundColor: 'red' }}
+            titleStyle={{ color: '#fff' }}
+            leftButton={
+              <TouchableOpacity>
+                <Image
+                  source={{
+                    uri:
+                      // tslint:disable-next-line: max-line-length
+                      'https://s1.codooncdn.com/operation-tools/internal-user/2018-12-07T10.16.57/96x96x1150xj5Iboh0j6GsVprLOxH.png',
+                  }}
+                  style={{ width: 20, height: 20 }}
+                />
+              </TouchableOpacity>
+            }
           />
 
           <View
@@ -65,22 +78,14 @@ class NavigatorExample extends React.Component {
           </View>
           <Navigator
             title="Navigator Title4"
-            leftButton={{
-              children: (
-                <Image
-                  source={{ uri: IMG_URL }}
-                  style={{ width: 20, height: 20 }}
-                />
-              ),
-            }}
-            rightButton={{
-              children: (
+            rightButton={
+              <TouchableOpacity>
                 <Image
                   source={{ uri: IMG_URL2 }}
                   style={{ width: 20, height: 20 }}
                 />
-              ),
-            }}
+              </TouchableOpacity>
+            }
           />
 
           <View
@@ -90,6 +95,12 @@ class NavigatorExample extends React.Component {
           </View>
           <Navigator
             title="Linear Gradient Nav"
+            titleStyle={{
+              color: scrollY.interpolate({
+                inputRange: [0, 100, 300],
+                outputRange: ['#222', '#f2f2f2', '#fff'],
+              }) as any,
+            }}
             style={{
               flex: 2,
               backgroundColor: scrollY.interpolate({

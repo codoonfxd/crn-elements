@@ -3,13 +3,23 @@ import { DEVICE_WIDTH } from '../../lib/constant'
 
 const style = StyleSheet.create({
   wrapper: {
+    height: 50,
+    backgroundColor: '#fff',
+    flexDirection: 'column',
+  },
+  innerWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    alignItems: 'center',
     height: 50,
     borderBottomWidth: 1,
+    backgroundColor: '#fff',
     borderColor: '#f2f2f2',
     borderStyle: 'solid',
+  },
+  arrowBack: {
+    width: 20,
+    height: 20,
   },
   titleContainer: {
     flex: 2,

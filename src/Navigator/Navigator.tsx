@@ -2,7 +2,7 @@
  * @Author: JaneEyre(lsy@codoon.com)
  * @Date: 2019-04-23 11:19:22
  * @Last Modified by: JaneEyre(lsy@codoon.com)
- * @Last Modified time: 2019-04-24 11:38:58
+ * @Last Modified time: 2019-06-12 13:32:41
  * @Content: Navigator
  */
 import React, { ReactNode } from 'react'
@@ -12,11 +12,14 @@ import {
   TouchableOpacity,
   TextStyle,
   Animated,
+  Image,
 } from 'react-native'
 
 import styles from './style'
-import { Omit } from 'lodash'
+import { isClassComponent, isFunctionComponent } from '../lib/utils'
+import { IS_IPHONE_X } from '../lib/device'
 
+export type IButtonType = ReactNode | React.Component
 export interface INavigatorProps {
   // navigator title
   title: string
@@ -27,26 +30,21 @@ export interface INavigatorProps {
   // wether absolute positioning is supported
   absolute?: boolean
   // navigator left button config
-  leftButton?: INavigatorButton
-  // navigator right button config
-  rightButton?: INavigatorButton
+  rightButtonStyle?: ViewStyle
+  // right button
+  rightButton?: IButtonType
+  // navigator left button style
+  leftButtonStyle?: ViewStyle
+  // left button
+  leftButton?: IButtonType
 }
 
-type IButtonChildren = ReactNode | React.Component
-
-export interface INavigatorButton {
-  // navigator button children
-  children: IButtonChildren
-  // the method after the navigator button is pressed
-  onPress?: () => any
-  // navigator button custom style
-  style?: ViewStyle
-  // navigator button press activeOpacity
-  activeOpacity?: number
-}
+const ARROW_BACK =
+  // tslint:disable-next-line: max-line-length
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAAB50lEQVRo3u3ZzSvEQRgHcGu9tCQuckIOchDlhrgpXOTC88x63U2L4iCFcNhyUQ4ObhK1LtqQkpLigBwk7RG5kCRFDuTdsktJnjm4+M5hvvsPfHpmfvM8MxsTY2NjY2NjY2Pzx4Qd3E+73GEIJ+jkGQpHfuw3gONP4IVPjhGkpmRe++bASa1pvPOTEyWh9pLKoNBvzgdoE8JpzuIjkfOq6gGcxjw+FTlPbgZwuIguRc6tuxKxd8roRuLQVUMxglNFdyLnTOUDOFTHT+JiHbqzEdVp41eRs+dJR3B6xaUK04Y3BfFljcgcXuxORIwXExrOVND5//08jgMazihgqboTeUnkvKlezHixLnKeVQukhfKsuFT3XIPhlGv2jhc08fCg3EIBX9ZXoxgQK3QHA6kSzdncCZuaeUoEPUKmwkh6XLSiGVTbQSRfPM9pFm4IdRWM5UkNaTzsQO2lMc2JFPDHoUjDGtJyjwt1KnXRm3wx9KWCSO5mehHrFFIZqKOylh7EKh035aCqVMG3Ium8oQDWUPhaJF1zKYpUyBdy26Vq1MLl0on82KAU6lzKpAN51mYCkTzpvC9WaQs2nPhSadugJ70oKYlWDXr0jM4CCTRvECeSoJOmDeJ83v1Vn0F/LdjY2NjY2NgYlneNdJiYTAB1AAAAAABJRU5ErkJggg=='
 
 class Navigator extends React.Component<INavigatorProps> {
-  static defaultProps: Omit<INavigatorProps, 'leftButton' | 'rightButton'> = {
+  static defaultProps: INavigatorProps = {
     title: '',
     style: {},
     titleStyle: {},
@@ -54,36 +52,15 @@ class Navigator extends React.Component<INavigatorProps> {
   }
 
   /**
-   * determine wthether the component is a react class component
-   * @param { object } component
-   * @returns { boolean }
-   */
-  isClassComponent = (component: IButtonChildren): boolean => {
-    return Object.getPrototypeOf(component).name === 'Component'
-  }
-
-  /**
-   * determine wthether the component is a react function component
-   * @param { object } component
-   * @returns { boolean }
-   */
-  isFunctionComponent = (component: IButtonChildren): boolean => {
-    return typeof component === 'function' && React.isValidElement(component())
-  }
-
-  /**
    * get the button child component according to the child type
    * @param { object } button
    * @returns { object }
    */
-  getButtonChild = (button: INavigatorButton): IButtonChildren => {
-    if (React.isValidElement(button.children)) {
-      return button.children
-    } else if (
-      this.isClassComponent(button.children) ||
-      this.isFunctionComponent(button.children)
-    ) {
-      const Child = button.children as React.ComponentClass
+  getButtonComponent = (button: IButtonType): IButtonType => {
+    if (React.isValidElement(button)) {
+      return button
+    } else if (isClassComponent(button) || isFunctionComponent(button)) {
+      const Child = button as React.ComponentClass
       return <Child />
     } else {
       console.error(
@@ -97,45 +74,52 @@ class Navigator extends React.Component<INavigatorProps> {
     const {
       title,
       style,
-      leftButton,
-      rightButton,
       titleStyle,
       absolute,
+      rightButton,
+      leftButton,
+      leftButtonStyle,
     } = this.props
+
+    const defaultLeftButton = (
+      <TouchableOpacity style={[styles.leftButtonContainer, leftButtonStyle]}>
+        <Image source={{ uri: ARROW_BACK }} style={styles.arrowBack} />
+      </TouchableOpacity>
+    )
 
     return (
       <Animated.View
         style={[styles.wrapper, absolute ? styles.absolute : null, style]}
       >
-        {leftButton ? (
-          <TouchableOpacity
-            onPress={leftButton.onPress}
-            style={[styles.leftButtonContainer, leftButton.style]}
-            activeOpacity={leftButton.activeOpacity}
-          >
-            {this.getButtonChild(leftButton)}
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.leftButtonContainer} />
+        {absolute && IS_IPHONE_X && (
+          <View
+            style={{
+              height: 30,
+              backgroundColor: 'transparent',
+            }}
+          />
         )}
+        <Animated.View style={[styles.innerWrapper, style]}>
+          {leftButton ? (
+            <View style={[styles.leftButtonContainer, leftButtonStyle]}>
+              {this.getButtonComponent(leftButton)}
+            </View>
+          ) : (
+            defaultLeftButton
+          )}
 
-        <View style={styles.titleContainer}>
-          <Animated.Text style={[styles.titleStyle, titleStyle]}>
-            {title}
-          </Animated.Text>
-        </View>
+          <View style={styles.titleContainer}>
+            <Animated.Text style={[styles.titleStyle, titleStyle]}>
+              {title}
+            </Animated.Text>
+          </View>
 
-        {rightButton ? (
-          <TouchableOpacity
-            onPress={rightButton.onPress}
-            style={[styles.rightButtonContainer, rightButton.style]}
-            activeOpacity={rightButton.activeOpacity}
+          <View
+            style={[styles.rightButtonContainer, this.props.rightButtonStyle]}
           >
-            {this.getButtonChild(rightButton)}
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.rightButtonContainer} />
-        )}
+            {rightButton && this.getButtonComponent(rightButton)}
+          </View>
+        </Animated.View>
       </Animated.View>
     )
   }
