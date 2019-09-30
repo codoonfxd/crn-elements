@@ -3,7 +3,7 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'; // 
 import routes from './routes';
 
 const RootStack = createStackNavigator(routes, {
-  initialRouteName: 'Input', //'Home',
+  initialRouteName: 'Home',
 });
 
 const AppContainer = createAppContainer(RootStack);

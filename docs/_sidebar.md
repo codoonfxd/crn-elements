@@ -7,6 +7,7 @@
   - [Toast](elements/toast.md)
   - [Provider](elements/provider.md)
   - [Portal](elements/portal.md)
+  - [PickerView](elements/picker_view.md)
   - [Input](elements/input.md)
   - [Navigator](elements/navigator.md)
 
