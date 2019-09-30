@@ -4,6 +4,7 @@ import Gallery from '../Gallery';
 import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
+import Input from '../Input';
 import Navigator from '../Navigator'
 
 const routes = {
@@ -41,6 +42,12 @@ const routes = {
     screen: Provider,
     navigationOptions: {
       title: 'Provider',
+    },
+  },
+  Input: {
+    screen: Input,
+    navigationOptions: {
+      title: 'Input',
     },
   },
   Navigator: {
