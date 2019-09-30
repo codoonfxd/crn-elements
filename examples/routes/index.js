@@ -11,7 +11,7 @@ import Modal from '../Modal';
 
 const routes = {
   Home: {
-    screen: HomeScreen,
+    screen: Modal,
     navigationOptions: {
       title: 'crnElements',
     },
