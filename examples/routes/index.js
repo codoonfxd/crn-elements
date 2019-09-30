@@ -6,7 +6,8 @@ import Toast from '../Toast';
 import Provider from '../Provider';
 import PickerView from '../PickerView';
 import Input from '../Input';
-import Navigator from '../Navigator'
+import Navigator from '../Navigator';
+import Modal from '../Modal';
 
 const routes = {
   Home: {
@@ -49,6 +50,8 @@ const routes = {
     screen: PickerView,
     navigationOptions: {
       title: 'PickerView',
+    },
+  },
   Input: {
     screen: Input,
     navigationOptions: {
@@ -58,9 +61,15 @@ const routes = {
   Navigator: {
     screen: Navigator,
     navigationOptions: {
-      title: 'Navigator'
-    }
-  }
+      title: 'Navigator',
+    },
+  },
+  Modal: {
+    screen: Modal,
+    navigationOptions: {
+      title: 'Modal',
+    },
+  },
 };
 
 export default routes;
