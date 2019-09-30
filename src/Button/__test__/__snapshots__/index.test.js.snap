@@ -16,7 +16,6 @@ exports[`<Button /> 渲染快照 1`] = `
       "height": 50,
       "paddingLeft": 12,
       "paddingRight": 12,
-      "width": 750,
     }
   }
 >
