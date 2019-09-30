@@ -30,6 +30,7 @@
     "run-ios": "react-native run-ios",
     "ios": "expo start --ios",
     "android": "expo start --android",
+    "run-android": "react-native run-android",
     "pretty-ts": "prettier-tslint fix 'src/**/*.ts{,x}'"
   },
   "devDependencies": {

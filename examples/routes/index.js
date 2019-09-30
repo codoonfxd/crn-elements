@@ -5,6 +5,7 @@ import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
 import PickerView from '../PickerView';
+import Input from '../Input';
 import Navigator from '../Navigator'
 
 const routes = {
@@ -48,6 +49,10 @@ const routes = {
     screen: PickerView,
     navigationOptions: {
       title: 'PickerView',
+  Input: {
+    screen: Input,
+    navigationOptions: {
+      title: 'Input',
     },
   },
   Navigator: {
