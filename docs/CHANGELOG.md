@@ -1,8 +1,12 @@
-## 0.5.2 (2019-04-16)
+# 0.6.0 (2019-09-30)
 
 
 ### Bug Fixes
 
+* 修改navigator单元测试 ([232f650](https://github.com/codoonfxd/crn-elements/commit/232f650))
+* 添加Navigator组件点击事件 ([fadf698](https://github.com/codoonfxd/crn-elements/commit/fadf698))
+* 调整导航栏组件 ([ef80b09](https://github.com/codoonfxd/crn-elements/commit/ef80b09))
+* **button:** remove default width of button ([2319c71](https://github.com/codoonfxd/crn-elements/commit/2319c71))
 * **toast:** fixed returned value bug of open func ([f913c18](https://github.com/codoonfxd/crn-elements/commit/f913c18))
 * **toast:** fixed the position and mask style bug ([99cde56](https://github.com/codoonfxd/crn-elements/commit/99cde56))
 * **toast:** optimize destroy function of Toast ([4c1bf44](https://github.com/codoonfxd/crn-elements/commit/4c1bf44))
@@ -10,6 +14,7 @@
 
 ### Features
 
+* add Navigator component ([f535884](https://github.com/codoonfxd/crn-elements/commit/f535884))
 * **button:** new prop of Button and fix some bugs ([218f2d6](https://github.com/codoonfxd/crn-elements/commit/218f2d6))
 * **portal:** add portal position style: zIndex ([64eb114](https://github.com/codoonfxd/crn-elements/commit/64eb114))
 * **portal:** new component: Portal.Consumer ([5bc41fd](https://github.com/codoonfxd/crn-elements/commit/5bc41fd))
@@ -68,8 +73,8 @@
 
 ### Features
 
-* Initial commit ([54b78dd](https://github.com/codoonfxd/crn-elements/commit/54b78dd))
 * **button:** 新增Button组件，并添加相关常量 ([2f6bb3f](https://github.com/codoonfxd/crn-elements/commit/2f6bb3f))
+* Initial commit ([54b78dd](https://github.com/codoonfxd/crn-elements/commit/54b78dd))
 
 
 
