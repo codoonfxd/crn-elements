@@ -30,6 +30,8 @@ interface IProps {
   showBottomSpace?: boolean
   /** 按钮文字显示行数 */
   numberOfLines?: number
+  /** 按钮点击颜色 */
+  underlayColor?: string
   onPress?(): any
 }
 
@@ -42,6 +44,7 @@ export default class Button extends React.Component<IProps> {
     ghost: false,
     showBottomSpace: false,
     numberOfLines: 1,
+    underlayColor: '',
   }
 
   render() {
@@ -54,6 +57,7 @@ export default class Button extends React.Component<IProps> {
       loading = false,
       showBottomSpace = false,
       ghost = false,
+      underlayColor,
       numberOfLines,
     } = this.props
     const color = Color(style.backgroundColor || THEME_COLOR)
@@ -85,7 +89,7 @@ export default class Button extends React.Component<IProps> {
       <TouchableHighlight
         style={{
           height: 50 + iphoneXBottomSpace,
-          width: DEVICE_WIDTH,
+          // width: DEVICE_WIDTH,
           paddingLeft: 12,
           paddingRight: 12,
           ...ghostStyle,
@@ -93,7 +97,11 @@ export default class Button extends React.Component<IProps> {
           backgroundColor,
         }}
         underlayColor={
-          ghost ? '#ffffff' : disabled ? DISABLE_COLOR : darkenColor
+          ghost
+            ? '#ffffff'
+            : disabled
+            ? DISABLE_COLOR
+            : underlayColor || darkenColor
         }
         onPress={disabled || loading ? undefined : onPress}
       >
