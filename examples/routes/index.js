@@ -5,6 +5,7 @@ import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
 import PickerView from '../PickerView';
+import Navigator from '../Navigator'
 
 const routes = {
   Home: {
@@ -49,6 +50,12 @@ const routes = {
       title: 'PickerView',
     },
   },
+  Navigator: {
+    screen: Navigator,
+    navigationOptions: {
+      title: 'Navigator'
+    }
+  }
 };
 
 export default routes;
