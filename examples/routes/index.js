@@ -4,7 +4,10 @@ import Gallery from '../Gallery';
 import Portal from '../Portal';
 import Toast from '../Toast';
 import Provider from '../Provider';
-import Modal from '../Modal'
+import PickerView from '../PickerView';
+import Input from '../Input';
+import Navigator from '../Navigator';
+import Modal from '../Modal';
 
 const routes = {
   Home: {
@@ -43,12 +46,30 @@ const routes = {
       title: 'Provider',
     },
   },
+  PickerView: {
+    screen: PickerView,
+    navigationOptions: {
+      title: 'PickerView',
+    },
+  },
+  Input: {
+    screen: Input,
+    navigationOptions: {
+      title: 'Input',
+    },
+  },
+  Navigator: {
+    screen: Navigator,
+    navigationOptions: {
+      title: 'Navigator',
+    },
+  },
   Modal: {
     screen: Modal,
     navigationOptions: {
-      title: 'Modal'
-    }
-  }
+      title: 'Modal',
+    },
+  },
 };
 
 export default routes;

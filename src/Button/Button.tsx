@@ -2,7 +2,7 @@
  * @Author: 沈经纬(shenjw@codoon.com)
  * @Date: 2019-03-19 15:34:24
  * @Last Modified by: 沈经纬(shenjw@codoon.com)
- * @Last Modified time: 2019-04-11 14:35:37
+ * @Last Modified time: 2019-04-17 17:28:12
  * @Content: 按钮
  */
 import * as React from 'react'
@@ -15,7 +15,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import Color from 'color'
-import { DEVICE_WIDTH, THEME_COLOR, DISABLE_COLOR } from '../lib/constant'
+import { THEME_COLOR, DISABLE_COLOR } from '../lib/constant'
 import { IS_IPHONE_X } from '../lib/device'
 
 interface IProps {

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigator /> snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flexDirection": "column",
+      "height": 50,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderBottomWidth": 1,
+        "borderColor": "#f2f2f2",
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "column",
+          "height": 50,
+          "justifyContent": "center",
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAAB50lEQVRo3u3ZzSvEQRgHcGu9tCQuckIOchDlhrgpXOTC88x63U2L4iCFcNhyUQ4ObhK1LtqQkpLigBwk7RG5kCRFDuTdsktJnjm4+M5hvvsPfHpmfvM8MxsTY2NjY2NjY2Pzx4Qd3E+73GEIJ+jkGQpHfuw3gONP4IVPjhGkpmRe++bASa1pvPOTEyWh9pLKoNBvzgdoE8JpzuIjkfOq6gGcxjw+FTlPbgZwuIguRc6tuxKxd8roRuLQVUMxglNFdyLnTOUDOFTHT+JiHbqzEdVp41eRs+dJR3B6xaUK04Y3BfFljcgcXuxORIwXExrOVND5//08jgMazihgqboTeUnkvKlezHixLnKeVQukhfKsuFT3XIPhlGv2jhc08fCg3EIBX9ZXoxgQK3QHA6kSzdncCZuaeUoEPUKmwkh6XLSiGVTbQSRfPM9pFm4IdRWM5UkNaTzsQO2lMc2JFPDHoUjDGtJyjwt1KnXRm3wx9KWCSO5mehHrFFIZqKOylh7EKh035aCqVMG3Ium8oQDWUPhaJF1zKYpUyBdy26Vq1MLl0on82KAU6lzKpAN51mYCkTzpvC9WaQs2nPhSadugJ70oKYlWDXr0jM4CCTRvECeSoJOmDeJ83v1Vn0F/LdjY2NjY2NgYlneNdJiYTAB1AAAAAABJRU5ErkJggg==",
+          }
+        }
+        style={
+          Object {
+            "height": 20,
+            "width": 20,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 2,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#222",
+            "fontSize": 14,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        title
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+            "flexDirection": "column",
+            "height": 50,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
