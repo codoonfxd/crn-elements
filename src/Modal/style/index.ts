@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { MODAL_ZINDEX, THEME_COLOR, WHITE_COLOR } from '../../lib/constant'
 
 const styles = StyleSheet.create({

@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-04-22 20:58:27
  * @Content: Modal Prompt Component
  */
-import React from 'react'
+import * as React from 'react'
 import Modal, { IModalFootItem } from './Modal'
 import { ViewStyle, View, Text, StyleSheet, TextInput } from 'react-native'
 import { Omit } from 'lodash'

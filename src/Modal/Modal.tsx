@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-04-22 20:50:20
  * @Content: Modal
  */
-import React from 'react'
+import * as React from 'react'
 import {
   View,
   Animated,
