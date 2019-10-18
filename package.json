@@ -1,6 +1,6 @@
 {
   "name": "@codoonfxd/crn-elements",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A ReactNative Component Library of CodoonFXD.",
   "keywords": [
     "ReactNative",
@@ -66,6 +66,7 @@
     "react-dom": "^16.8.4",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-typescript-transformer": "^1.2.12",
+    "react-navigation": "^3.9.1",
     "react-test-renderer": "^16.8.4",
     "schedule": "^0.4.0",
     "sinon": "^7.3.2",
@@ -98,9 +99,7 @@
     "@types/color": "^3.0.0",
     "@types/lodash": "^4.14.141",
     "color": "^3.1.2",
-    "lodash": "^4.17.15",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.9.1"
+    "lodash": "^4.17.15"
   },
   "jest": {
     "preset": "react-native",
