@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { DEVICE_WIDTH } from '../../lib/constant'
 
 const style = StyleSheet.create({

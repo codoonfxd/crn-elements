@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-06-12 13:47:28
  * @Content: Navigator
  */
-import React, { ReactNode } from 'react'
+import * as React from 'react'
 import {
   View,
   ViewStyle,
@@ -19,7 +19,7 @@ import styles from './style'
 import { isClassComponent, isFunctionComponent } from '../lib/utils'
 import { IS_IPHONE_X } from '../lib/device'
 
-export type IButtonType = ReactNode | React.Component
+export type IButtonType = React.ReactNode | React.Component
 export interface INavigatorProps {
   // navigator title
   title: string

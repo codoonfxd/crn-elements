@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-04-22 21:07:21
  * @Content: Modal Alert Component
  */
-import React from 'react'
+import * as React from 'react'
 import Modal, { IModalFootItem } from './Modal'
 import { View, Text, StyleSheet, ViewStyle } from 'react-native'
 import { Omit } from 'lodash'

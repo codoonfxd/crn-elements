@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-04-22 16:26:04
  * @Content: Modal Static Class
  */
-import React from 'react'
+import * as React from 'react'
 import Portal from '../Portal'
 import ModalAlert, { IModalAlertConf } from './ModalAlert'
 import ModalPrompt, { IModalPromptConf } from './ModalPrompt'
